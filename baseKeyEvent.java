@@ -41,16 +41,16 @@ public class HelloApplication extends Application
     {
         switch (kc)
         {
-            case W:
+            case W: case UP:
                 this.y -= 100;
                 break;
-            case A:
+            case A: case LEFT:
                 this.x -= 100;
                 break;
-            case S:
+            case S: case DOWN:
                 this.y += 100;
                 break;
-            case D:
+            case D: case RIGHT:
                 this.x += 100;
                 break;
         }
