@@ -136,11 +136,16 @@ public class HelloApplication extends Application
             case SPACE:
                 realPlayer[0] = 0;
                 realPlayer[1] = 0;
+                realScreen[0] = 0;
+                realScreen[1] = 0;
                 playerHead = 0;
                 player[0] = 400;
                 player[1] = 300;
                 portal[0] = 200;
                 portal[1] = 200;
+                box[0] = -500;
+                box[1] = -100;
+                road = 500;
                 this.blue = false;
         }
 
@@ -286,55 +291,25 @@ public class HelloApplication extends Application
         else
             this.gc.setFill(Color.LIME);
             
-//         for (int i = 0; i < 900; i += 20)
-//             for (int j = road; j < road + 50; j += 20)
-//                 this.gc.fillRect(i, j, 10, 10;
-
-//         for (int i = 10; i < 900; i += 20)
-//             for (int j = road + 10; j < road + 50; j += 20)
-//                 this.gc.fillRect(i, j, 10, 10);
-
         for (int i = 0; i < 900; i += 20)
-            this.gc.fillRect(i, road, 10, 10);
+            for (int j = road; j < road + 50; j += 20)
+                this.gc.fillRect(i, j, 10, 10);
 
         for (int i = 10; i < 900; i += 20)
-            this.gc.fillRect(i, road + 10, 10, 10);
-
-        for (int i = 0; i < 900; i += 20)
-            this.gc.fillRect(i, road + 20, 10, 10);
-
-        for (int i = 10; i < 900; i += 20)
-            this.gc.fillRect(i, road + 30, 10, 10);
-
-        for (int i = 0; i < 900; i += 20)
-            this.gc.fillRect(i, road + 40, 10, 10);
+            for (int j = road + 10; j < road + 50; j += 20)
+                this.gc.fillRect(i, j, 10, 10);
 
         if (b)
             this.gc.setFill(Color.LIME);
         else
             this.gc.setFill(Color.GREEN);
             
-//         for (int i = 10; i < 900; i += 20)
-//             for (int j = road; j < road + 50; j += 20)
-//                 this.gc.fillRect(i, j, 10, 10);
+        for (int i = 10; i < 900; i += 20)
+            for (int j = road; j < road + 50; j += 20)
+                this.gc.fillRect(i, j, 10, 10);
                 
-//         for (int i = 0; i < 900; i += 20)
-//             for (int j = road + 10; j < road + 50; j += 20)
-//                 this.gc.fillRect(i, j, 10, 10);
-
-        for (int i = 10; i < 900; i += 20)
-            this.gc.fillRect(i, road, 10, 10);
-
         for (int i = 0; i < 900; i += 20)
-            this.gc.fillRect(i, road + 10, 10, 10);
-
-        for (int i = 10; i < 900; i += 20)
-            this.gc.fillRect(i, road + 20, 10, 10);
-
-        for (int i = 0; i < 900; i += 20)
-            this.gc.fillRect(i, road + 30, 10, 10);
-
-        for (int i = 10; i < 900; i += 20)
-            this.gc.fillRect(i, road + 40, 10, 10);
+            for (int j = road + 10; j < road + 50; j += 20)
+                this.gc.fillRect(i, j, 10, 10);
     }
 }
