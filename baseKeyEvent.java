@@ -18,8 +18,9 @@ public class HelloApplication extends Application
     static int[] realScreen = { 0, 0 };
 
     static String text;
+    boolean blue = false;
     boolean info = false;
-    static boolean fullscreen = false;
+    boolean fullscreen = false;
     BorderPane bp;
     Canvas canvas = new Canvas();
     GraphicsContext gc = this.canvas.getGraphicsContext2D();
@@ -97,28 +98,35 @@ public class HelloApplication extends Application
                     (player[0] == box[0] && player[1] == box[1] - 50 && playerHead == 2) ||
                     (player[0] == box[0] + 50 && player[1] == box[1] && playerHead == 3))
                         text = "An unmovable box.";
+                else if ((player[0] == portal[0] && player[1] == portal[1] + 50 && playerHead == 0) ||
+                    (player[0] == portal[0] - 50 && player[1] == portal[1] && playerHead == 1) ||
+                    (player[0] == portal[0] && player[1] == portal[1] - 50 && playerHead == 2) ||
+                    (player[0] == portal[0] + 50 && player[1] == portal[1] && playerHead == 3))
+                        text = "A mysterious portal.";
+                else if (player[0] == portal[0] && player[1] == portal[1])
+                    this.blue = true;
                 break;
             case F:
-                if (!fullscreen)
+                if (!this.fullscreen)
                 {
                     this.stage.setMaximized(true);
-                    fullscreen = true;
+                    this.fullscreen = true;
                 }
                 else
                 {
                     this.stage.setMaximized(false);
-                    fullscreen = false;
+                    this.fullscreen = false;
                     this.bp.setLeft(new VBox());
                     this.info = false;
                 }
                 break;
             case ENTER:
-                if (!this.info && fullscreen)
+                if (!this.info && this.fullscreen)
                 {
                     this.bp.setLeft(this.vb);
                     this.info = true;
                 }
-                else if (this.info && fullscreen)
+                else if (this.info && this.fullscreen)
                 {
                     this.bp.setLeft(new VBox());
                     this.info = false;
@@ -132,6 +140,7 @@ public class HelloApplication extends Application
                 player[1] = 300;
                 portal[0] = 200;
                 portal[1] = 200;
+                this.blue = false;
         }
 
         this.redraw();
@@ -139,6 +148,12 @@ public class HelloApplication extends Application
 
     public void redraw()
     {
+        if (this.blue)
+        {
+            this.blueLoop();
+            return;
+        }
+
         this.gc.setFill(Color.BLACK);
         this.gc.fillRect(0, 0, 900, 600);
         this.gc.setFill(Color.RED);
@@ -248,5 +263,13 @@ public class HelloApplication extends Application
             box[1] += i;
             portal[1] += i;
         }
+    }
+
+    public void blueLoop()
+    {
+        this.gc.setFill(Color.BLUE);
+        this.gc.fillRect(0, 0, 900, 650);
+        this.gc.setFill(Color.RED);
+        this.gc.fillRect(player[0], player[1], 50, 50);
     }
 }
