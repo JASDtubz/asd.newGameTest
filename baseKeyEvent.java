@@ -216,9 +216,9 @@ public class HelloApplication extends Application
         this.gc.setFill(Color.BLACK);
         this.gc.fillRect(0, 600, 900, 50);
         this.gc.setFill(Color.WHITE);
-        this.gc.setFont(new Font("Arial", 50));
+        this.gc.setFont(new Font("Courier", 50));
         this.gc.setLineWidth(2);
-        this.gc.fillText(text, 0, 625);
+        this.gc.fillText(text, 0, 650);
         this.realCoords.setText("Real Coordinates " + realPlayer[0] + " " + realPlayer[1]);
         this.screenShift.setText("Screen Position " + realScreen[0] + " " + realScreen[1]);
         this.screenCoords.setText("Screen Coordinates " + player[0] + " " + player[1]);
