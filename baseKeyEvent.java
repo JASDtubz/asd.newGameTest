@@ -285,6 +285,14 @@ public class HelloApplication extends Application
             this.gc.setFill(Color.GREEN);
         else
             this.gc.setFill(Color.LIME);
+            
+//         for (int i = 0; i < 900; i += 20)
+//             for (int j = road; j < road + 50; j += 20)
+//                 this.gc.fillRect(i, j, 10, 10;
+
+//         for (int i = 10; i < 900; i += 20)
+//             for (int j = road + 10; j < road + 50; j += 20)
+//                 this.gc.fillRect(i, j, 10, 10);
 
         for (int i = 0; i < 900; i += 20)
             this.gc.fillRect(i, road, 10, 10);
@@ -305,6 +313,14 @@ public class HelloApplication extends Application
             this.gc.setFill(Color.LIME);
         else
             this.gc.setFill(Color.GREEN);
+            
+//         for (int i = 10; i < 900; i += 20)
+//             for (int j = road; j < road + 50; j += 20)
+//                 this.gc.fillRect(i, j, 10, 10);
+                
+//         for (int i = 0; i < 900; i += 20)
+//             for (int j = road + 10; j < road + 50; j += 20)
+//                 this.gc.fillRect(i, j, 10, 10);
 
         for (int i = 10; i < 900; i += 20)
             this.gc.fillRect(i, road, 10, 10);
