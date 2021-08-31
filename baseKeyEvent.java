@@ -1,5 +1,3 @@
-package com.example.keytest;
-
 import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.canvas.*;
