@@ -11,6 +11,7 @@
             texture<127,127,127,10,0,10,20>
         )
     ],
+    collidable:false,
     text0:"A Thing example",
     text1:"Another example"
     choice1:[
@@ -27,4 +28,5 @@
             texture<30,30,30,0,0,50,50>
         )
     ]
+    collidable:true
 }
