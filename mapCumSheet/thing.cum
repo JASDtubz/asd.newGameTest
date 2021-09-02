@@ -1,8 +1,6 @@
 {
     hmid:0,
     name:thing1,
-    x:800,
-    y:800,
     state:[
         0:(
             texture<255,255,255,0,0,10,10>,
@@ -23,8 +21,6 @@
 {
     hmid:1,
     name:thing2,
-    x:-550,
-    y:400,
     state:[
         0:(
             texture<30,30,30,0,0,50,50>
