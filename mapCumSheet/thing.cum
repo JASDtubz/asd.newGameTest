@@ -1,0 +1,26 @@
+{
+    hmid:0,
+    x:800,
+    y:800,
+    state:[
+        0:(
+            texture<255,255,255,0,0,10,10>,
+            texture<213,76,129,0,40,20,10>
+        ),
+        1:texture<127,127,127,10,0,10,20>
+    ],
+    text0:"A Thing example",
+    text1:"Another example"
+    choice1:[
+        0:"Yes",
+        1:"No"
+    ]
+}
+{
+    hmid:1,
+    x:-550,
+    y:400,
+    state:[
+        0:texture<30,30,30,0,0,50,50>
+    ]
+}
