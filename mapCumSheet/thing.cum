@@ -1,6 +1,7 @@
 {
     hmid:0,
     name:thing1,
+    collidable:false,
     state:[
         0:(
             texture<255,255,255,0,0,10,10>,
@@ -9,26 +10,15 @@
         1:(
             texture<127,127,127,10,0,10,20>
         )
-    ],
-    collidable:false,
-    text0:"A Thing example",
-    text1:"Another example"
-    choice1:[
-        0:"Yes",
-        1:"No"
     ]
-    text1.0.0:"So Yes?",
-    text1.0.1:"Ok then",
-    text1.1.0:"Nevermind",
-    text2:"Let's go"
 }
 {
     hmid:1,
     name:thing2,
+    collidable:true,
     state:[
         0:(
             texture<30,30,30,0,0,50,50>
         )
     ]
-    collidable:true
 }
