@@ -1,5 +1,6 @@
 {
     hmid:0,
+    name:thing1,
     x:800,
     y:800,
     state:[
@@ -21,6 +22,7 @@
 }
 {
     hmid:1,
+    name:thing2,
     x:-550,
     y:400,
     state:[
