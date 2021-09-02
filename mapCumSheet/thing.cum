@@ -17,6 +17,10 @@
         0:"Yes",
         1:"No"
     ]
+    text1.0.0:"So Yes?",
+    text1.0.1:"Ok then",
+    text1.1.0:"Nevermind",
+    text2:"Let's go"
 }
 {
     hmid:1,
