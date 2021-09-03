@@ -1,5 +1,4 @@
 {
-    hmid:0,
     name:thing1,
     collidable:false,
     state:[
@@ -13,7 +12,6 @@
     ]
 }
 {
-    hmid:1,
     name:thing2,
     collidable:true,
     state:[
