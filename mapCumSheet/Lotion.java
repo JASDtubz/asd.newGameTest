@@ -75,12 +75,10 @@ public class Lotion
 
     public StringBuilder remove(StringBuilder sb, int x, int y)
     {
-        StringBuilder sb_ = sb;
-
         for (int i = y; x <= y; i--)
-            sb_.deleteCharAt(i);
+            sb.deleteCharAt(i);
 
-        return sb_;
+        return sb;
     }
 
     public String get(StringBuilder sb, int i)
