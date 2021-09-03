@@ -11,7 +11,7 @@ public class Lotion
     public HashMap execute()
     {
         Sperm s = new Sperm();
-        Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("assets/egg.cum")));
+        Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<Integer, Sperm> hm = new HashMap<>();
         String str0;
         String get = "";
