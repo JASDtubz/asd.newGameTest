@@ -1,6 +1,6 @@
 {
     name:thing1,
-    collidable:false,
+    collidable:true,
     state:[
         0:(
             texture<255,255,255,0,0,10,10>,
@@ -13,7 +13,7 @@
 }
 {
     name:thing2,
-    collidable:true,
+    collidable:false,
     state:[
         0:(
             texture<30,30,30,0,0,50,50>
