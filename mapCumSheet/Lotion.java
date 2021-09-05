@@ -1,87 +1,167 @@
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Lotion
 {
-    public Lotion()
-    {
-    }
+    public Lotion() { }
 
-    public HashMap execute()
+    public HashMap<Integer, Sperm> execute()
     {
-        Sperm s = new Sperm();
+        Sperm s;
         Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<Integer, Sperm> hm = new HashMap<>();
-        String str0;
-        String get = "";
-        StringBuilder str1 = new StringBuilder("");
+        String str;
+        StringBuilder sb = new StringBuilder();
         int i = 0;
         int line = 0;
 
         while (scan.hasNextLine())
         {
-            str0 = scan.nextLine();
+            s = new Sperm();
+            str = scan.nextLine();
             line++;
 
-            if (!str0.equals("}"))
-                str1.append(str0);
+            if (!str.equals("}"))
+                sb.append(str);
             else
             {
-                boolean b = true;
-                int i_ = 0;
+                boolean bool = true;
 
-                while (b)
-                    try
-                    {
-                        i_ = str1.indexOf(" ");
-                        str1.deleteCharAt(i_);
-                    }
-                    catch (Exception ignored) { b = false; }
+                while (bool)
+                    try { sb.deleteCharAt(sb.indexOf(" ")); }
+                    catch (Exception ignored) { bool = false; }
+
+                try { sb.deleteCharAt(sb.indexOf("{")); }
+                catch (Exception ignored) { System.out.println("No open curly bracket found at " + line); }
 
                 try
                 {
-                    i_ = str1.indexOf("{");
-                    str1.deleteCharAt(i_);
-                }
-                catch (Exception ignored) { }
-
-                try
-                {
-                    i_ = str1.indexOf("name");
-                    str1 = this.remove(str1, i_, str1.indexOf("e"));
-                    b = true;
+                    sb.delete(0, sb.indexOf(":"));
+                    bool = true;
                 }
                 catch (Exception ignored) { System.out.println("No name found at " + line); }
 
-                if (b)
+                if (bool)
                 {
-                    try
-                    {
-                        i_ = str1.indexOf(":");
-                        str1.deleteCharAt(i_);
-                    }
+                    try { sb.deleteCharAt(sb.indexOf(":")); }
                     catch (Exception ignored) { System.out.println("No colon found at " + line); }
 
-                    i_ = str1.indexOf(",");
-                    s.setName(this.get(new StringBuilder(str1.toString()), i_));
-                    b = false;
+                    try { s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
+                    catch (Exception ignored) { System.out.println("No comma found at " + line); }
+
+                    sb.delete(0, sb.indexOf("c"));
+                    bool = false;
                 }
+
+                try
+                {
+                    sb.delete(sb.indexOf("collidable"), sb.indexOf(":"));
+                    bool = true;
+                }
+                catch (Exception ignored) { System.out.println("No collidable found at " + line); }
+
+                if (bool)
+                {
+                    try { sb.deleteCharAt(sb.indexOf(":")); }
+                    catch (Exception ignored) { System.out.println("No colon found at " + line); }
+
+                    s.setCollision(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")).equals("true"));
+                    sb.delete(0, sb.indexOf("s"));
+                    bool = false;
+                }
+
+                try
+                {
+                    sb.delete(sb.indexOf("state"), sb.indexOf(":"));
+                    bool = true;
+                }
+                catch (Exception ignored) { System.out.println("No state found at " + line); }
+
+                if (bool)
+                {
+                    try { sb.delete(sb.indexOf(":"), sb.indexOf("[")); }
+                    catch (Exception ignored) { System.out.println("No colon or open bracket found at " + line); }
+
+                    boolean b0 = true;
+
+                    while (b0)
+                    {
+                        int r = 0;
+                        int g = 0;
+                        int b = 0;
+                        int x = 0;
+                        int y = 0;
+                        int l = 0;
+                        int h = 0;
+
+                        try { sb.delete(0, sb.indexOf("<") + 1); }
+                        catch (Exception ignored){ System.out.println("Incorrect syntax at " + line); }
+
+                        try
+                        {
+                            r = Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")));
+                            sb.delete(0, sb.indexOf(",") + 1);
+                        }
+                        catch (Exception ignored) { System.out.println("R error at " + line); }
+
+                        try
+                        {
+                            g = Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")));
+                            sb.delete(0, sb.indexOf(",") + 1);
+                        }
+                        catch (Exception ignored) { System.out.println("G error at " + line); }
+
+                        try
+                        {
+                            b = Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")));
+                            sb.delete(0, sb.indexOf(",") + 1);
+                        }
+                        catch (Exception ignored) { System.out.println("B error at " + line); }
+
+                        try
+                        {
+                            x = Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")));
+                            sb.delete(0, sb.indexOf(",") + 1);
+                        }
+                        catch (Exception ignored) { System.out.println("X error at " + line); }
+
+                        try
+                        {
+                            y = Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")));
+                            sb.delete(0, sb.indexOf(",") + 1);
+                        }
+                        catch (Exception ignored) { System.out.println("Y error at " + line); }
+
+                        try
+                        {
+                            l = Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")));
+                            sb.delete(0, sb.indexOf(",") + 1);
+                        }
+                        catch (Exception ignored) { System.out.println("L error at " + line); }
+
+                        try
+                        {
+                            h = Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(">")));
+                            sb.delete(0, sb.indexOf(">") + 1);
+                        }
+                        catch (Exception ignored) { System.out.println("H error at " + line); }
+
+                        sb.delete(0, sb.indexOf(")") + 1);
+                        s.setTexture(r, b, g, x, y, l, h);
+
+                        if (!this.get(new StringBuilder(sb.toString()), 1).equals(","))
+                            b0 = false;
+                    }
+                }
+
+                hm.put(i, s);
+                i++;
             }
         }
 
         return hm;
     }
 
-    public StringBuilder remove(StringBuilder sb, int x, int y)
-    {
-        for (int i = y; x <= y; i--)
-            sb.deleteCharAt(i);
-
-        return sb;
-    }
-
-    public String get(StringBuilder sb, int i)
+    private String get(StringBuilder sb, int i)
     {
         boolean b = true;
 
