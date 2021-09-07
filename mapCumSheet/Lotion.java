@@ -13,34 +13,34 @@ public class Lotion
         StringBuilder sb = new StringBuilder();
         int i = 0;
         int line = 0;
-
-        while (scan.hasNextLine())
+        
+        while (scan.hasNextLine())  //Scans cum file
         {
             s = new Sperm();
             str = scan.nextLine();
             line++;
-
-            if (!str.equals("}"))
+            
+            if (!str.equals("}"))   //scans until {
                 sb.append(str);
             else
             {
                 boolean bool = true;
-
-                while (bool)
+                
+                while (bool)    //clears whitespace
                     try { sb.deleteCharAt(sb.indexOf(" ")); }
                     catch (Exception ignored) { bool = false; }
 
-                try { sb.deleteCharAt(sb.indexOf("{")); }
+                try { sb.deleteCharAt(sb.indexOf("{")); }   //checks for syntax
                 catch (Exception ignored) { System.out.println("No open curly bracket found at " + line); }
 
-                try
+                try     //checks for syntax
                 {
                     sb.delete(0, sb.indexOf(":"));
                     bool = true;
                 }
                 catch (Exception ignored) { System.out.println("No name found at " + line); }
 
-                if (bool)
+                if (bool)   //sets name of map object
                 {
                     try { sb.deleteCharAt(sb.indexOf(":")); }
                     catch (Exception ignored) { System.out.println("No colon found at " + line); }
