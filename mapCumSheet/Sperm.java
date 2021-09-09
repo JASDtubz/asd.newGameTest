@@ -4,7 +4,7 @@ public class Sperm
 {
     public String name;
     public boolean collision;
-    public ArrayList<Texture> texture = new ArrayList<>();
+    public ArrayList<Texture[]> texture = new ArrayList<>();
 
     public Sperm() { }
 
@@ -12,9 +12,22 @@ public class Sperm
 
     public void setCollision(boolean b) { this.collision = b; }
 
-    public void setTexture(int r, int b, int g, int x, int y, int l, int h)
+    public void setTexture(int i, int[] r, int[] g, int[] b, int[] x, int[] y, int[] l, int[] h)
     {
-        texture.add(new Texture(r, g, b, x, y, l, h));
+        Texture[] text = new Texture[i + 1]();
+        
+        for (int i_ = 0; i_ < i; i_++)
+        {
+            text[i_] = r[i_];
+            text[i_] = g[i_];
+            text[i_] = b[i_];
+            text[i_] = x[i_];
+            text[i_] = y[i_];
+            text[i_] = l[i_];
+            text[i_] = h[i_];
+        }
+        
+        this.texture.add(text);
     }
 }
 
