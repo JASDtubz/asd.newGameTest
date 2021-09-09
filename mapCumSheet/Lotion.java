@@ -167,10 +167,8 @@ public class Lotion
     private String get(StringBuilder sb, int i)
     {
         boolean b = true;
-
-        while (b)
-            try { sb.deleteCharAt(i); }
-            catch (Exception ignored) { b = false; }
+        
+        sb.delete(i, sb.length() - 1);
 
         return sb.toString();
     }
