@@ -13,19 +13,19 @@ public class Lotion
         StringBuilder sb = new StringBuilder();
         int i = 0;
         int line = 0;
-        
+
         while (scan.hasNextLine())
         {
-            s = new Sperm();
             str = scan.nextLine();
             line++;
-            
+
             if (!str.equals("}"))
                 sb.append(str);
             else
             {
+                s = new Sperm();
                 boolean bool = true;
-                
+
                 while (bool)
                     try { sb.deleteCharAt(sb.indexOf(" ")); }
                     catch (Exception ignored) { bool = false; }
@@ -75,83 +75,86 @@ public class Lotion
                     bool = true;
                 }
                 catch (Exception ignored) { System.out.println("No state found at " + line); }
-                
+
                 if (bool)
                 {
                     boolean b0 = true;
-                    
+
                     while (b0)
                     {
                         boolean b1 = true;
-                        ArrayList<Integer> r = new ArrayList<>();
-                        ArrayList<Integer> g = new ArrayList<>();
-                        ArrayList<Integer> b = new ArrayList<>();
-                        ArrayList<Integer> x = new ArrayList<>();
-                        ArrayList<Integer> y = new ArrayList<>();
-                        ArrayList<Integer> l = new ArrayList<>();
-                        ArrayList<Integer> h = new ArrayList<>();
-                        int i0 = 0;
-                        
+                        ArrayList<Short> r = new ArrayList<>();
+                        ArrayList<Short> g = new ArrayList<>();
+                        ArrayList<Short> b = new ArrayList<>();
+                        ArrayList<Short> x = new ArrayList<>();
+                        ArrayList<Short> y = new ArrayList<>();
+                        ArrayList<Short> l = new ArrayList<>();
+                        ArrayList<Short> h = new ArrayList<>();
+
                         while (b1)
                         {
+                            try { sb.delete(0, sb.indexOf("<") + 1); }
+                            catch (Exception ignored) { System.out.println("No texture found at " + line); }
+
                             try
                             {
-                                r.add(Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                r.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
                             }
                             catch (Exception ignored) { System.out.println("R error at " + line); }
 
                             try
                             {
-                                g.add(Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                g.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
                             }
                             catch (Exception ignored) { System.out.println("G error at " + line); }
 
                             try
                             {
-                                b.add(Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                b.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
                             }
                             catch (Exception ignored) { System.out.println("B error at " + line); }
 
                             try
                             {
-                                x.add(Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                x.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
                             }
                             catch (Exception ignored) { System.out.println("X error at " + line); }
 
                             try
                             {
-                                y.add(Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                y.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
                             }
                             catch (Exception ignored) { System.out.println("Y error at " + line); }
 
                             try
                             {
-                                l.add(Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                l.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
                             }
                             catch (Exception ignored) { System.out.println("L error at " + line); }
 
                             try
                             {
-                                h.add(Integer.parseInt(this.get(new StringBuilder(sb.toString()), sb.indexOf(">"))));
+                                h.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(">"))));
                                 sb.delete(0, sb.indexOf(">") + 1);
                             }
                             catch (Exception ignored) { System.out.println("H error at " + line); }
-                            
-                            s.setTexture(i0, r.toArray(), g.toArray(), b.toArray(), x.toArray(), y.toArray(), l.toArray(), h.toArray());
-                            i0++;
-                                
-                            if (!sb.indexOf(0).equals(","))
+
+                            if (!(sb.indexOf(",") == 0))
+                            {
+                                s.setTexture(r.size(), this.getList(r), this.getList(g), this.getList(b),
+                                    this.getList(x), this.getList(y), this.getList(l), this.getList(h));
                                 b1 = false;
+                            }
 
                         }
-                        
-                        if (sb.indexOf(1).equals("]"))
+
+                        if (sb.indexOf("]") == 1)
                             b0 = false;
                     }
                 }
@@ -166,10 +169,18 @@ public class Lotion
 
     private String get(StringBuilder sb, int i)
     {
-        boolean b = true;
-        
-        sb.delete(i, sb.length() - 1);
+        sb.delete(i, sb.length());
 
         return sb.toString();
+    }
+
+    private short[] getList(ArrayList<Short> al)
+    {
+        short[] ii = new short[al.size()];
+
+        for (byte i = 0; i < ii.length; i++)
+            ii[i] = al.get(i);
+
+        return ii;
     }
 }
