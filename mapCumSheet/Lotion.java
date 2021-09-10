@@ -145,7 +145,7 @@ public class Lotion
                             }
                             catch (Exception ignored) { System.out.println("H error at " + line); }
 
-                            if (!(sb.indexOf(",") == 0))
+                            if (sb.indexOf(")") == 0)
                             {
                                 s.setTexture(r.size(), this.getList(r), this.getList(g), this.getList(b),
                                     this.getList(x), this.getList(y), this.getList(l), this.getList(h));
