@@ -5,20 +5,20 @@
             x:100,
             y:100,
             id:start1<
-                Hello World,
-                This is nice,
+                Hello_World,
+                This_is_nice,
                 $c Yes $t start2,
                 $c No $t start3
             >
             id:start2<
-                That's good,
-                let's continue $t start4
+                That's_good,
+                Let's_continue $t start4
             >
             id:start3<
-                Ok then $t start4
+                Ok_then $t start4
             >
             id:start4<
-                Come on
+                Come_on
             >
         )
         thing2:(
