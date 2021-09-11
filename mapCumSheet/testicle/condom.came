@@ -1,1 +1,29 @@
-
+{
+    name:intro,
+    sperm:[
+        thing1:(
+            x:100,
+            y:100,
+            id:start1<
+                Hello World,
+                This is nice,
+                $c Yes $t start2,
+                $c No $t start3
+            >
+            id:start2<
+                That's good,
+                let's continue $t start4
+            >
+            id:start3<
+                Ok then $t start4
+            >
+            id:start4<
+                Come on
+            >
+        )
+        thing2:(
+            x:0,
+            y:0
+        )
+    ]
+}
