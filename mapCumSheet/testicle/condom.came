@@ -15,7 +15,7 @@
                 Let's_continue $t start4
             >
             id:start3<
-                Ok_then $t start4
+                Ok`_then $t start4
             >
             id:start4<
                 Come_on
