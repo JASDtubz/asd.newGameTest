@@ -6,7 +6,6 @@ public class Lotion
 
     public HashMap<Integer, Sperm> execute()
     {
-        Sperm s;
         Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<Integer, Sperm> hm = new HashMap<>();
         String str;
@@ -23,28 +22,22 @@ public class Lotion
                 sb.append(str);
             else
             {
-                s = new Sperm();
+                Sperm s = new Sperm();
                 boolean bool = true;
 
                 while (bool)
                     try { sb.deleteCharAt(sb.indexOf(" ")); }
                     catch (Exception ignored) { bool = false; }
 
-                try { sb.deleteCharAt(sb.indexOf("{")); }
-                catch (Exception ignored) { System.out.println("No open curly bracket found at " + line); }
-
                 try
                 {
-                    sb.delete(0, sb.indexOf(":"));
+                    sb.delete(0, sb.indexOf(":") + 1);
                     bool = true;
                 }
                 catch (Exception ignored) { System.out.println("No name found at " + line); }
 
                 if (bool)
                 {
-                    try { sb.deleteCharAt(sb.indexOf(":")); }
-                    catch (Exception ignored) { System.out.println("No colon found at " + line); }
-
                     try { s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
                     catch (Exception ignored) { System.out.println("No comma found at " + line); }
 
@@ -54,16 +47,13 @@ public class Lotion
 
                 try
                 {
-                    sb.delete(sb.indexOf("collidable"), sb.indexOf(":"));
+                    sb.delete(sb.indexOf("collidable"), sb.indexOf(":") + 1);
                     bool = true;
                 }
                 catch (Exception ignored) { System.out.println("No collidable found at " + line); }
 
                 if (bool)
                 {
-                    try { sb.deleteCharAt(sb.indexOf(":")); }
-                    catch (Exception ignored) { System.out.println("No colon found at " + line); }
-
                     s.setCollision(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")).equals("true"));
                     sb.delete(0, sb.indexOf("s"));
                     bool = false;
@@ -93,57 +83,25 @@ public class Lotion
 
                         while (b1)
                         {
-                            try { sb.delete(0, sb.indexOf("<") + 1); }
-                            catch (Exception ignored) { System.out.println("No texture found at " + line); }
-
                             try
                             {
+                                sb.delete(0, sb.indexOf("<") + 1);
                                 r.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                            }
-                            catch (Exception ignored) { System.out.println("R error at " + line); }
-
-                            try
-                            {
                                 g.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                            }
-                            catch (Exception ignored) { System.out.println("G error at " + line); }
-
-                            try
-                            {
                                 b.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                            }
-                            catch (Exception ignored) { System.out.println("B error at " + line); }
-
-                            try
-                            {
                                 x.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                            }
-                            catch (Exception ignored) { System.out.println("X error at " + line); }
-
-                            try
-                            {
                                 y.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                            }
-                            catch (Exception ignored) { System.out.println("Y error at " + line); }
-
-                            try
-                            {
                                 l.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                            }
-                            catch (Exception ignored) { System.out.println("L error at " + line); }
-
-                            try
-                            {
                                 h.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(">"))));
                                 sb.delete(0, sb.indexOf(">") + 1);
                             }
-                            catch (Exception ignored) { System.out.println("H error at " + line); }
+                            catch (Exception ignored) { System.out.println("Texture error at " + line); }
 
                             if (sb.indexOf(")") == 0)
                             {
