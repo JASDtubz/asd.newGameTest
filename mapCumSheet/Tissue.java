@@ -4,10 +4,10 @@ public class Tissue
 {
     public Tissue() { }
 
-    public HashMap<String, Semen> execute(HashMap<Integer, Sperm> sperm)
+    public HashMap<String, Map> execute(HashMap<Integer, Entity> entity)
     {
         Scanner scan = new Scanner(Objects.requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
-        HashMap<String, Semen> hm = new HashMap<>();
+        HashMap<String, Map> hm = new HashMap<>();
         String str;
         StringBuilder sb = new StringBuilder();
         String string = "";
@@ -22,7 +22,7 @@ public class Tissue
                 sb.append(str);
             else
             {
-                Semen s = new Semen(sperm);
+                Map s = new Map(entity);
                 boolean b = true;
 
                 while (b)

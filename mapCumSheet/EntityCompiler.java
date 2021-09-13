@@ -1,13 +1,13 @@
 import java.util.*;
 
-public class Lotion
+public class EntityCompiler
 {
     public Lotion() { }
 
-    public HashMap<Integer, Sperm> execute()
+    public HashMap<Integer, Entity> execute()
     {
         Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
-        HashMap<Integer, Sperm> hm = new HashMap<>();
+        HashMap<Integer, Entity> hm = new HashMap<>();
         String str;
         StringBuilder sb = new StringBuilder();
         int i = 0;
@@ -22,7 +22,7 @@ public class Lotion
                 sb.append(str);
             else
             {
-                Sperm s = new Sperm();
+                Entity s = new Entity();
                 boolean bool = true;
 
                 while (bool)

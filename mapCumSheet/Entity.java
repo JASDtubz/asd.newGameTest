@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Sperm
+public class Entity
 {
     public String name;
     public boolean collision;
