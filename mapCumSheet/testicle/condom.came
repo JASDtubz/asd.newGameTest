@@ -1,5 +1,9 @@
 {
     name:intro,
+    xMin:-2000,
+    yMin:-1500,
+    xMax:1067,
+    yMax:500,
     sperm:[
         thing1:(
             x:100,
