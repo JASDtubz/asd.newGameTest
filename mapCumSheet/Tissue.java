@@ -18,8 +18,7 @@ public class Tissue
             str = scan.nextLine();
             line++;
 
-            if (!str.equals("}"))
-                sb.append(str);
+            if (!str.equals("}")) { sb.append(str); }
             else
             {
                 Semen s = new Semen(sperm);
