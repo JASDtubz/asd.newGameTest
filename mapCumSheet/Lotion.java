@@ -18,16 +18,17 @@ public class Lotion
             str = scan.nextLine();
             line++;
 
-            if (!str.equals("}"))
-                sb.append(str);
+            if (!str.equals("}")) { sb.append(str); }
             else
             {
                 Sperm s = new Sperm();
                 boolean bool = true;
 
                 while (bool)
+                {
                     try { sb.deleteCharAt(sb.indexOf(" ")); }
                     catch (Exception ignored) { bool = false; }
+                }
 
                 try
                 {
@@ -107,13 +108,12 @@ public class Lotion
                             {
                                 s.setTexture(r.size(), this.getList(r), this.getList(g), this.getList(b),
                                     this.getList(x), this.getList(y), this.getList(l), this.getList(h));
+
                                 b1 = false;
                             }
-
                         }
 
-                        if (sb.indexOf("]") == 1)
-                            b0 = false;
+                        if (sb.indexOf("]") == 1) { b0 = false; }
                     }
                 }
 
@@ -136,8 +136,7 @@ public class Lotion
     {
         short[] ii = new short[al.size()];
 
-        for (byte i = 0; i < ii.length; i++)
-            ii[i] = al.get(i);
+        for (byte i = 0; i < ii.length; i++) { ii[i] = al.get(i); }
 
         return ii;
     }
