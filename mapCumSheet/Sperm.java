@@ -16,8 +16,7 @@ public class Sperm
     {
         Texture[] t = new Texture[i];
 
-        for (byte i_ = 0; i_ < i; i_++)
-            t[i_] = new Texture(r[i_], g[i_], b[i_], x[i_], y[i_], l[i_], h[i_]);
+        for (byte i_ = 0; i_ < i; i_++) { t[i_] = new Texture(r[i_], g[i_], b[i_], x[i_], y[i_], l[i_], h[i_]); }
 
         this.texture.add(t);
     }
