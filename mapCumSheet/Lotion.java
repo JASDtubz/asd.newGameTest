@@ -35,12 +35,12 @@ public class Lotion
                     sb.delete(0, sb.indexOf(":") + 1);
                     bool = true;
                 }
-                catch (Exception ignored) { System.out.println("No name found at " + line); }
+                catch (Exception ignored) { System.err.println("No name found at " + line); }
 
                 if (bool)
                 {
                     try { s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
-                    catch (Exception ignored) { System.out.println("No comma found at " + line); }
+                    catch (Exception ignored) { System.err.println("No comma found at " + line); }
 
                     sb.delete(0, sb.indexOf("c"));
                     bool = false;
@@ -51,7 +51,7 @@ public class Lotion
                     sb.delete(sb.indexOf("collidable"), sb.indexOf(":") + 1);
                     bool = true;
                 }
-                catch (Exception ignored) { System.out.println("No collidable found at " + line); }
+                catch (Exception ignored) { System.err.println("No collidable found at " + line); }
 
                 if (bool)
                 {
@@ -65,7 +65,7 @@ public class Lotion
                     sb.delete(sb.indexOf("state"), sb.indexOf(":"));
                     bool = true;
                 }
-                catch (Exception ignored) { System.out.println("No state found at " + line); }
+                catch (Exception ignored) { System.err.println("No state found at " + line); }
 
                 if (bool)
                 {
@@ -102,7 +102,7 @@ public class Lotion
                                 h.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(">"))));
                                 sb.delete(0, sb.indexOf(">") + 1);
                             }
-                            catch (Exception ignored) { System.out.println("Texture error at " + line); }
+                            catch (Exception ignored) { System.err.println("Texture error at " + line); }
 
                             if (sb.indexOf(")") == 0)
                             {
