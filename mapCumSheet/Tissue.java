@@ -25,15 +25,17 @@ public class Tissue
                 boolean b = true;
 
                 while (b)
+                {
                     try { sb.deleteCharAt(sb.indexOf(" ")); }
                     catch (Exception ignored) { b = false; }
+                }
 
                 try
                 {
                     sb.delete(0, sb.indexOf(":") + 1);
                     b = true;
                 }
-                catch (Exception ignored) { System.out.println("No name found at " + line); }
+                catch (Exception ignored) { System.err.println("No name found at " + line); }
 
                 if (b)
                 {
@@ -42,9 +44,24 @@ public class Tissue
                         s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")));
                         string = s.name;
                     }
-                    catch (Exception ignored) { System.out.println("No comma found at " + line); }
+                    catch (Exception ignored) { System.err.println("No comma found at " + line); }
 
-
+                    b = false;
+                }
+                
+                try
+                {
+                    sb.delete(0, sb.indexOf(":") + 1);
+                    b = true;
+                }
+                catch (Exception e) { System.err.println("No minimum x found at " + line); }
+                
+                if (b)
+                {
+                    try
+                    {
+                        
+                    }
                 }
             }
         }
