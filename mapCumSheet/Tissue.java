@@ -45,7 +45,8 @@ public class Tissue
                         string = s.name;
                     }
                     catch (Exception ignored) { System.err.println("No comma found at " + line); }
-
+                    
+                    
                     b = false;
                 }
                 
@@ -60,7 +61,7 @@ public class Tissue
                 {
                     try
                     {
-                        
+                        s.setXMin(this.get(new StringBuilder(sb.toString(), sb.indexOf(","))));
                     }
                 }
             }
