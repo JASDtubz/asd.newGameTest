@@ -40,7 +40,7 @@ public class Lotion
                 if (bool)
                 {
                     try { s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
-                    catch (Exception ignored) { System.err.println("Getting name error found at " + line); }
+                    catch (Exception ignored) { System.err.println("No name value found at " + line); }
 
                     sb.delete(0, sb.indexOf(",") + 1);
                     bool = false;
@@ -56,7 +56,7 @@ public class Lotion
                 if (bool)
                 {
                     try { s.setCollision(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")).equals("true")); }
-                    catch (Exception ignored) { System.err.println("Getting collidable error found at " + line); }
+                    catch (Exception ignored) { System.err.println("No collidable value found at " + line); }
                     
                     sb.delete(0, sb.indexOf(",") + 1);
                     bool = false;
@@ -104,7 +104,7 @@ public class Lotion
                                 h.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(">"))));
                                 sb.delete(0, sb.indexOf(">") + 1);
                             }
-                            catch (Exception ignored) { System.err.println("Texture error at " + line); }
+                            catch (Exception ignored) { System.err.println("No texture value at " + line); }
 
                             if (sb.indexOf(")") == 0)
                             {
