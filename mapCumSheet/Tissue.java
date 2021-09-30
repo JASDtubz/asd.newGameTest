@@ -108,6 +108,34 @@ public class Tissue
                     
                     b = false;
                 }
+                
+                try
+                {
+                    sb.delete(0, sb.indexOf("[") + 1);
+                    b = true;
+                }
+                catch (Exception ignored) { System.err.println("No sperm found at " + line); }
+                
+                if (b)
+                {
+                    boolean b0 = true;
+                    
+                    while (b0)
+                    {
+                        boolean b1 = false;
+                        
+                        try
+                        {
+                            sb.delete(0, sb.indexOf("(") + 1);
+                            b1 = true;
+                        }
+                        catch (Exception ignored) { System.err.println("No cell found at " + line); }
+                        
+                        //
+                        
+                        if (sb.indexOf("]") == 1) { b0 = false; }
+                    }
+                }
             }
         }
 
