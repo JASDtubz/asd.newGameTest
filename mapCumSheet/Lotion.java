@@ -40,7 +40,7 @@ public class Lotion
                 if (bool)
                 {
                     try { s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
-                    catch (Exception ignored) { System.err.println("No comma found at " + line); }
+                    catch (Exception ignored) { System.err.println("Getting name error found at " + line); }
 
                     sb.delete(0, sb.indexOf(",") + 1);
                     bool = false;
@@ -56,15 +56,15 @@ public class Lotion
                 if (bool)
                 {
                     try { s.setCollision(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")).equals("true")); }
-                    catch (Exception ignored) { System.err.println("No collidable found at " + line); }
+                    catch (Exception ignored) { System.err.println("Getting collidable error found at " + line); }
                     
-                    sb.delete(0, sb.indexOf("s"));
+                    sb.delete(0, sb.indexOf(",") + 1);
                     bool = false;
                 }
 
                 try
                 {
-                    sb.delete(sb.indexOf("state"), sb.indexOf(":"));
+                    sb.delete(0, sb.indexOf(":"));
                     bool = true;
                 }
                 catch (Exception ignored) { System.err.println("No state found at " + line); }
