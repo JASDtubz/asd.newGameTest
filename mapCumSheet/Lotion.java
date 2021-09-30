@@ -42,20 +42,22 @@ public class Lotion
                     try { s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
                     catch (Exception ignored) { System.err.println("No comma found at " + line); }
 
-                    sb.delete(0, sb.indexOf("c"));
+                    sb.delete(0, sb.indexOf(",") + 1);
                     bool = false;
                 }
 
                 try
                 {
-                    sb.delete(sb.indexOf("collidable"), sb.indexOf(":") + 1);
+                    sb.delete(0, sb.indexOf(":") + 1);
                     bool = true;
                 }
                 catch (Exception ignored) { System.err.println("No collidable found at " + line); }
 
                 if (bool)
                 {
-                    s.setCollision(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")).equals("true"));
+                    try { s.setCollision(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")).equals("true")); }
+                    catch (Exception ignored) { System.err.println("No collidable found at " + line); }
+                    
                     sb.delete(0, sb.indexOf("s"));
                     bool = false;
                 }
