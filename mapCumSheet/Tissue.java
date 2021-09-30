@@ -46,6 +46,20 @@ public class Tissue
                     }
                     catch (Exception ignored) { System.err.println("No comma found at " + line); }
                     
+                    b = false;
+                }
+                
+                try
+                {
+                    sb.delete(0, sb.indexOf(":") + 1);
+                    b = true;
+                }
+                catch (Exception ignored) { System.err.println("No minimum x found at " + line); }
+                
+                if (b)
+                {
+                    try { s.setXMin(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
+                    catch (Exception ignored) { System.out.println("Getting minimum x error found at " + line); }
                     
                     b = false;
                 }
@@ -55,14 +69,44 @@ public class Tissue
                     sb.delete(0, sb.indexOf(":") + 1);
                     b = true;
                 }
-                catch (Exception e) { System.err.println("No minimum x found at " + line); }
+                catch (Exception ignored) { System.err.println("No minimum y found at " + line); }
                 
                 if (b)
                 {
-                    try
-                    {
-                        s.setXMin(this.get(new StringBuilder(sb.toString(), sb.indexOf(","))));
-                    }
+                    try { s.setYMin(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
+                    catch (Exception ignored) { System.err.println("No minimum y value found at " + line); }
+                    
+                    b = false;
+                }
+                
+                try
+                {
+                    sb.delete(0, sb.indexOf(":") + 1);
+                    b = true;
+                }
+                catch (Exception ignored) { System.err.println("No maximum x found at " + line); }
+                
+                if (b)
+                {
+                    try { s.setXMax(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
+                    catch (Exception ignored) { System.err.println("No maximum x value found at " + line); }
+                    
+                    b = false;
+                }
+                
+                try
+                {
+                    sb.delete(0, sb.indexOf(":") + 1);
+                    b = true;
+                }
+                catch (Exception ignored) { System.err.println("No maximum y found at " + line); }
+                
+                if (b)
+                {
+                    try { s.setYMax(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
+                    catch (Exception ignored) { System.err.println("No maximum y value found at " + line); }
+                    
+                    b = false;
                 }
             }
         }
@@ -70,7 +114,7 @@ public class Tissue
         return hm;
     }
 
-    public String get(StringBuilder sb, int i)
+    private String get(StringBuilder sb, int i)
     {
         sb.delete(i, sb.length());
 
