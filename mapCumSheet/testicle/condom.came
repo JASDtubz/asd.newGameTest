@@ -24,7 +24,7 @@
             id:start4<
                 Come_on
             >
-        )
+        ),
         thing2:(
             x:0,
             y:0
