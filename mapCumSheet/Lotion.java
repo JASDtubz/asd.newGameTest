@@ -39,7 +39,7 @@ public class Lotion
 
                 if (bool)
                 {
-                    try { s.setName(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))); }
+                    try { s.setName(sb.substring(0, sb.indexOf(","))); }
                     catch (Exception ignored) { System.err.println("No name value found at " + line); }
 
                     bool = false;
@@ -54,7 +54,7 @@ public class Lotion
 
                 if (bool)
                 {
-                    try { s.setCollision(this.get(new StringBuilder(sb.toString()), sb.indexOf(",")).equals("true")); }
+                    try { s.setCollision(sb.substring(0, sb.indexOf(",")).equals("true")); }
                     catch (Exception ignored) { System.err.println("No collidable value found at " + line); }
                     
                     bool = false;
@@ -87,26 +87,26 @@ public class Lotion
                             try
                             {
                                 sb.delete(0, sb.indexOf("<") + 1);
-                                r.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                r.add(Short.parseShort(sb.substring(0, sb.indexOf(",")));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                g.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                g.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                b.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                b.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                x.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                x.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                y.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                y.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                l.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(","))));
+                                l.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                h.add(Short.parseShort(this.get(new StringBuilder(sb.toString()), sb.indexOf(">"))));
+                                h.add(Short.parseShort(sb.substring(0, sb.indexOf(">"))));
                                 sb.delete(0, sb.indexOf(">") + 1);
                             }
                             catch (Exception ignored) { System.err.println("No texture value at " + line); }
 
                             if (sb.indexOf(")") == 0)
                             {
-                                s.setTexture(r.size(), this.getList(r), this.getList(g), this.getList(b),
+                                s.setTexture(this.getList(r), this.getList(g), this.getList(b),
                                     this.getList(x), this.getList(y), this.getList(l), this.getList(h));
 
                                 b1 = false;
@@ -123,13 +123,6 @@ public class Lotion
         }
 
         return hm;
-    }
-
-    private String get(StringBuilder sb, int i)
-    {
-        sb.delete(i, sb.length());
-
-        return sb.toString();
     }
 
     private short[] getList(ArrayList<Short> al)
