@@ -13,14 +13,14 @@
                 This_is_nice,
                 $c Yes $t start2,
                 $c No $t start3
-            >
+            >,
             id:start2<
                 That's_good,
                 Let's_continue $t start4
-            >
+            >,
             id:start3<
                 Ok`_then $t start4
-            >
+            >,
             id:start4<
                 Come_on
             >
