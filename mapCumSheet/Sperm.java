@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Sperm
+public final class Sperm
 {
     public String name;
     public boolean collision;
@@ -8,11 +8,11 @@ public class Sperm
 
     public Sperm() { }
 
-    public void setName(String s) { this.name = s; }
+    public final void setName(String s) { this.name = s; }
 
-    public void setCollision(boolean b) { this.collision = b; }
+    public final void setCollision(boolean b) { this.collision = b; }
 
-    public void setTexture(short[] r, short[] g, short[] b, short[] x, short[] y, short[] l, short[] h)
+    public final void setTexture(short[] r, short[] g, short[] b, short[] x, short[] y, short[] l, short[] h)
     {
         Texture[] t = new Texture[i];
 
@@ -22,9 +22,9 @@ public class Sperm
     }
 }
 
-class Texture
+final class Texture
 {
-    public short r, b, g, x, y, l, h;
+    public final short r, b, g, x, y, l, h;
 
     public Texture(short r, short b, short g, short x, short y, short l, short h)
     {
