@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class Tissue
+public final class Tissue
 {
     public Tissue() { }
 
-    public HashMap<String, Semen> execute(HashMap<Integer, Sperm> sperm)
+    public final HashMap<String, Semen> execute(HashMap<Integer, Sperm> sperm)
     {
         Scanner scan = new Scanner(Objects.requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
         HashMap<String, Semen> hm = new HashMap<>();
@@ -142,7 +142,7 @@ public class Tissue
         return hm;
     }
 
-    private String get(StringBuilder sb, int i)
+    private final String get(StringBuilder sb, int i)
     {
         sb.delete(i, sb.length());
 
