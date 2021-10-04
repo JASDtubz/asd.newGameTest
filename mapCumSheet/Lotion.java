@@ -41,8 +41,7 @@ public final class Lotion
                 {
                     try { s.setName(sb.substring(0, sb.indexOf(","))); }
                     catch (Exception ignored) { System.err.println("No name value found at " + line); }
-
-                    bool = false;
+                    finally { bool = false; }
                 }
 
                 try
@@ -56,8 +55,7 @@ public final class Lotion
                 {
                     try { s.setCollision(sb.substring(0, sb.indexOf(",")).equals("true")); }
                     catch (Exception ignored) { System.err.println("No collidable value found at " + line); }
-                    
-                    bool = false;
+                    finally { bool = false; }
                 }
 
                 try
