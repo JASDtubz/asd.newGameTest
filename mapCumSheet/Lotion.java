@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class Lotion
+public final class Lotion
 {
     public Lotion() { }
 
-    public HashMap<Integer, Sperm> execute()
+    public final HashMap<Integer, Sperm> execute()
     {
         Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<Integer, Sperm> hm = new HashMap<>();
@@ -125,7 +125,7 @@ public class Lotion
         return hm;
     }
 
-    private short[] getList(ArrayList<Short> al)
+    private final short[] getList(ArrayList<Short> al)
     {
         short[] ii = new short[al.size()];
 
