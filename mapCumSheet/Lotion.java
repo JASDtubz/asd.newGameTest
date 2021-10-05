@@ -6,7 +6,7 @@ public final class Lotion
 
     public final HashMap<Integer, Sperm> execute()
     {
-        Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
+        final Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<Integer, Sperm> hm = new HashMap<>();
         String str;
         StringBuilder sb = new StringBuilder();
