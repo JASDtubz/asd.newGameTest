@@ -4,7 +4,7 @@ public final class Lotion
 {
     public Lotion() { }
 
-    public final HashMap<Integer, Sperm> execute()
+    public HashMap<Integer, Sperm> execute()
     {
         final Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<Integer, Sperm> hm = new HashMap<>();
@@ -85,7 +85,7 @@ public final class Lotion
                             try
                             {
                                 sb.delete(0, sb.indexOf("<") + 1);
-                                r.add(Short.parseShort(sb.substring(0, sb.indexOf(",")));
+                                r.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
                                 g.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
@@ -104,8 +104,7 @@ public final class Lotion
 
                             if (sb.indexOf(")") == 0)
                             {
-                                s.setTexture(this.getList(r), this.getList(g), this.getList(b),
-                                    this.getList(x), this.getList(y), this.getList(l), this.getList(h));
+                                s.setTexture(this.getList(r), this.getList(g), this.getList(b), this.getList(x), this.getList(y), this.getList(l), this.getList(h));
 
                                 b1 = false;
                             }
@@ -124,7 +123,7 @@ public final class Lotion
         return hm;
     }
 
-    private final short[] getList(ArrayList<Short> al)
+    private short[] getList(ArrayList<Short> al)
     {
         short[] ii = new short[al.size()];
 
