@@ -8,13 +8,13 @@ public final class Sperm
 
     public Sperm() { }
 
-    public final void setName(String s) { this.name = s; }
+    public void setName(String s) { this.name = s; }
 
-    public final void setCollision(boolean b) { this.collision = b; }
+    public void setCollision(boolean b) { this.collision = b; }
 
-    public final void setTexture(short[] r, short[] g, short[] b, short[] x, short[] y, short[] l, short[] h)
+    public void setTexture(short[] r, short[] g, short[] b, short[] x, short[] y, short[] l, short[] h)
     {
-        Texture[] t = new Texture[i];
+        Texture[] t = new Texture[r.length];
 
         for (byte i = 0; i < r.length; i++) { t[i] = new Texture(r[i], g[i], b[i], x[i], y[i], l[i], h[i]); }
 
