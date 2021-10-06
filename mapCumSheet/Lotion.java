@@ -1,4 +1,10 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+import static java.lang.Short.parseShort;
+import static java.lang.System.err;
+import static java.util.Objects.requireNonNull;
 
 public final class Lotion
 {
@@ -6,7 +12,7 @@ public final class Lotion
 
     public HashMap<Integer, Sperm> execute()
     {
-        final Scanner scan = new Scanner(Objects.requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
+        final Scanner scan = new Scanner(requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<Integer, Sperm> hm = new HashMap<>();
         String str;
         StringBuilder sb = new StringBuilder();
@@ -35,12 +41,12 @@ public final class Lotion
                     sb.delete(0, sb.indexOf(":") + 1);
                     bool = true;
                 }
-                catch (Exception ignored) { System.err.println("No name found at " + line); }
+                catch (Exception ignored) { err.println("No name found at " + line); }
 
                 if (bool)
                 {
                     try { s.setName(sb.substring(0, sb.indexOf(","))); }
-                    catch (Exception ignored) { System.err.println("No name value found at " + line); }
+                    catch (Exception ignored) { err.println("No name value found at " + line); }
                     finally { bool = false; }
                 }
 
@@ -49,12 +55,12 @@ public final class Lotion
                     sb.delete(0, sb.indexOf(":") + 1);
                     bool = true;
                 }
-                catch (Exception ignored) { System.err.println("No collidable found at " + line); }
+                catch (Exception ignored) { err.println("No collidable found at " + line); }
 
                 if (bool)
                 {
                     try { s.setCollision(sb.substring(0, sb.indexOf(",")).equals("true")); }
-                    catch (Exception ignored) { System.err.println("No collidable value found at " + line); }
+                    catch (Exception ignored) { err.println("No collidable value found at " + line); }
                     finally { bool = false; }
                 }
 
@@ -63,7 +69,7 @@ public final class Lotion
                     sb.delete(0, sb.indexOf(":"));
                     bool = true;
                 }
-                catch (Exception ignored) { System.err.println("No state found at " + line); }
+                catch (Exception ignored) { err.println("No state found at " + line); }
 
                 if (bool)
                 {
@@ -85,22 +91,22 @@ public final class Lotion
                             try
                             {
                                 sb.delete(0, sb.indexOf("<") + 1);
-                                r.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
+                                r.add(parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                g.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
+                                g.add(parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                b.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
+                                b.add(parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                x.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
+                                x.add(parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                y.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
+                                y.add(parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                l.add(Short.parseShort(sb.substring(0, sb.indexOf(","))));
+                                l.add(parseShort(sb.substring(0, sb.indexOf(","))));
                                 sb.delete(0, sb.indexOf(",") + 1);
-                                h.add(Short.parseShort(sb.substring(0, sb.indexOf(">"))));
+                                h.add(parseShort(sb.substring(0, sb.indexOf(">"))));
                                 sb.delete(0, sb.indexOf(">") + 1);
                             }
-                            catch (Exception ignored) { System.err.println("No texture value at " + line); }
+                            catch (Exception ignored) { err.println("No texture value at " + line); }
 
                             if (sb.indexOf(")") == 0)
                             {
@@ -127,7 +133,7 @@ public final class Lotion
     {
         short[] ii = new short[al.size()];
 
-        for (byte i = 0; i < ii.length; i++) { ii[i] = al.get(i); }
+        for (int i = 0; i < ii.length; i++) { ii[i] = al.get(i); }
 
         return ii;
     }
