@@ -191,3 +191,22 @@ public class Tissue
         return hm;
     }
 }
+
+public String fixString(StringBuilder sb)
+{
+    boolean b = true;
+    
+    while (b)
+    {
+        try { sb.replace(sb.indexOf("_"), sb.indexOf("_"), " "); }
+        catch (Exception ignored) { b = false; }
+    }
+    
+    while (!b)
+    {
+        try { sb.replace(sb.indexOf("`"), sb.indexOf("`"), ","); }
+        catch (Exception ignored) { b = true; }
+    }
+    
+    return sb;
+}
