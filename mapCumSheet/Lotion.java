@@ -122,7 +122,7 @@ public final class Lotion
 
                 hm.put(i, s);
                 i++;
-                sb.delete(0, sb.length() - 1);
+                sb.delete(0, sb.length());
             }
         }
 
