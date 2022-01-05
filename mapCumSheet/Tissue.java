@@ -134,6 +134,7 @@ public class Tissue
                     HashMap<String, Cell> hmc = new HashMap<>();
                     boolean b0 = true;
 
+                    //  Cell Loop
                     while (b0)
                     {
                         Cell c = new Cell();
@@ -172,7 +173,8 @@ public class Tissue
                         }
 
                         b1 = true;
-
+                        
+                        //  String Loop
                         while (b1)
                         {
                             String stringName = "";
@@ -213,8 +215,11 @@ public class Tissue
                             
                             hms.put(stringName, text);
                         }
-
+                        
+                        c.addText(hms);
                         hmc.put(ctr, c);
+                        
+                        
                     }
 
                     s.addCells(hmc);
