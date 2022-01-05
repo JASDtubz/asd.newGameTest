@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.System.err;
+import static java.util.Objects.requireNonNull;
 
 public class Tissue
 {
     public Tissue() { }
 
-    public HashMap<String, Semen> execute(HashMap<Integer, Sperm> sperm)
+    public HashMap<String, Semen> execute()
     {
-        Scanner scan = new Scanner(Objects.requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
+        Scanner scan = new Scanner(requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
         HashMap<String, Semen> hm = new HashMap<>();
         String str;
         StringBuilder sb = new StringBuilder();
@@ -27,7 +27,7 @@ public class Tissue
             if (!str.equals("}")) { sb.append(str); }
             else
             {
-                Semen s = new Semen(sperm);
+                Semen s = new Semen();
                 boolean b = true;
 
                 while (b)
@@ -110,34 +110,50 @@ public class Tissue
                     finally { b = false; }
                 }
 
+                //Checks Sperm
                 try
                 {
-                    sb.delete(0, sb.indexOf(":") + 1);
+                    sb.delete(0, sb.indexOf("[") + 1);
                     b = true;
                 }
                 catch (Exception ignored) { err.println("No sperm found at " + line); }
 
+                /*
+                        TODO create Cell here
+                    TODO add Cell
+                        create Cell Objects here
+                    TODO in Cell add Cell Objects
+                        create text here
+                    TODO in Cell Objects add text
+                    TODO return List of Cells
+                 */
+
+
                 if (b)
                 {
+                    HashMap<String, Cell> hmc = new HashMap<>();
                     boolean b0 = true;
-                    ArrayList<Cell> al = new ArrayList<>();
 
                     while (b0)
                     {
-                        boolean b1 = false;
                         Cell c = new Cell();
+                        String ctr = "";
+                        HashMap<String, String> hms = new HashMap<>();
+                        boolean b1 = false;
 
                         try
                         {
+                            ctr = sb.substring(0, sb.indexOf(":"));
+                            sb.delete(0, sb.indexOf("(") + 1);
                             sb.delete(0, sb.indexOf(":") + 1);
                             b1 = true;
                         }
-                        catch (Exception ignored) { err.println("No x found at " + line); }
+                        catch (Exception ignored) { err.println("No name found at " + line); }
 
                         if (b1)
                         {
                             try { c.setX(parseInt(sb.substring(0, sb.indexOf(",")))); }
-                            catch (Exception ignored) { err.println("No x value found at " + line); }
+                            catch (Exception ignored) { err.println("No x value at " + line); }
                             finally { b1 = false; }
                         }
 
@@ -151,15 +167,16 @@ public class Tissue
                         if (b1)
                         {
                             try { c.setY(parseInt(sb.substring(0, sb.indexOf(",")))); }
-                            catch (Exception ignored) { err.println("No y value found at " + line); }
+                            catch (Exception ignored) { err.println("No y value at " + line); }
+                            //Redundant finally statement
                         }
-                        
+
                         b1 = true;
 
                         while (b1)
                         {
-                            HashMap<String, String[]> hms = new HashMap<>();
-                            String str0 = "";
+                            String stringName = "";
+
                             boolean b2 = false;
 
                             try
@@ -167,46 +184,183 @@ public class Tissue
                                 sb.delete(0, sb.indexOf(":") + 1);
                                 b2 = true;
                             }
+                            catch (Exception ignored) { err.println("No x found at " + line); }
+
+                            if (b2)
+                            {
+                                try { }
+                                catch (Exception ignored) { }
+                                finally { }
+                            }
+                        }
+
+                        hmc.put(ctr, c);
+                    }
+
+                    s.addCells(hmc);
+                }
+
+                hm.put(string, s);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                //Gets Sperm
+                if (b)
+                {
+                    HashMap<String, String[]> hms = new HashMap<>();        //For text
+                    ArrayList<Cell> al = new ArrayList<>();                 //For Cell list
+                    boolean b0 = true;
+
+                    //Gets Sperm                                            add Cell
+                    while (b0)
+                    {
+                        boolean b1 = false;
+                        Cell c = new Cell();
+
+                        //Checks x
+                        try
+                        {
+                            sb.delete(0, sb.indexOf(":") + 1);
+                            b1 = true;
+                        }
+                        catch (Exception ignored) { err.println("No x found at " + line); }
+
+                        //Gets x
+                        if (b1)
+                        {
+                            try { c.setX(parseInt(sb.substring(0, sb.indexOf(",")))); }
+                            catch (Exception ignored) { err.println("No x value found at " + line); }
+                            finally { b1 = false; }
+                        }
+
+                        //Checks y
+                        try
+                        {
+                            sb.delete(0, sb.indexOf(":") + 1);
+                            b1 = true;
+                        }
+                        catch (Exception ignored) { err.println("No y found at " + line); }
+
+                        //Gets y
+                        if (b1)
+                        {
+                            try { c.setY(parseInt(sb.substring(0, sb.indexOf(",")))); }
+                            catch (Exception ignored) { err.println("No y value found at " + line); }
+                        }
+
+                        b1 = true;
+
+                        //Checks id box                                     Cell Objects
+                        while (b1)
+                        {
+                            ArrayList<String> als = new ArrayList<>();
+                            String str0 = "";
+                            boolean b2 = false;
+
+                            //Checks id
+                            try
+                            {
+                                sb.delete(0, sb.indexOf(":") + 1);
+                                b2 = true;
+                            }
                             catch (Exception ignored) { err.println("No id found at " + line); }
-                            
+
+                            //Gets id
                             if (b2)
                             {
                                 try { str0 = sb.substring(0, sb.indexOf("<")); }
                                 catch (Exception ignored) { err.println("No id value found at " + line); }
                             }
 
+                            //Checks strings                                text
                             while (b2)
                             {
-                                ArrayList<String> als = new ArrayList<>();
+                                boolean b3 = false;
 
+                                //Checks string
+                                try
+                                {
+                                    sb.delete(0, sb.indexOf("<") + 1);
+                                    b3 = true;
+                                }
+                                catch (Exception ignored)
+                                {
+                                    try
+                                    {
+                                        sb.delete(0, sb.indexOf(",") + 1);
+                                        b3 = true;
+                                    }
+                                    catch (Exception ignored0) { err.println("No string found at " + line); }
+                                }
 
+                                //Gets string
+                                if (b3)
+                                {
+                                    try { als.add(this.fixString(new StringBuilder(sb.substring(0, sb.indexOf("$b"))))); }
+                                    catch (Exception ignored) { err.println("No string value found at " + line); }
+                                    finally { sb.delete(0, sb.indexOf("$b") + 2); }
+                                }
+
+                                //Checks comma
+                                if (sb.indexOf(">") == 0) { b2 = false; }
                             }
 
+                            hms.put(str0, this.getList(als));
+
+                            //Checks comma too
+                            if (sb.indexOf("]") == 1) { b1 = false; }
                         }
+
+                        c.setText(hms);
+                        al.add(c);
                     }
+
+                    //s.addCell();
                 }
             }
         }
 
         return hm;
     }
-}
 
-public String fixString(StringBuilder sb)
-{
-    boolean b = true;
-    
-    while (b)
+    public String[] getList(ArrayList<String> al)
     {
-        try { sb.replace(sb.indexOf("_"), sb.indexOf("_"), " "); }
-        catch (Exception ignored) { b = false; }
+        String[] ss = new String[al.size()];
+
+        for (int i = 0; i < al.size(); i++) { ss[i] = al.get(i); }
+
+        return ss;
     }
-    
-    while (!b)
+
+    public String fixString(StringBuilder sb)
     {
-        try { sb.replace(sb.indexOf("`"), sb.indexOf("`"), ","); }
-        catch (Exception ignored) { b = true; }
+        boolean b = true;
+
+        while (b)
+        {
+            try { sb.replace(sb.indexOf("_"), sb.indexOf("_"), " "); }
+            catch (Exception ignored) { b = false; }
+        }
+
+        while (!b)
+        {
+            try { sb.replace(sb.indexOf("`"), sb.indexOf("`"), ","); }
+            catch (Exception ignored) { b = true; }
+        }
+
+        return sb.toString();
     }
-    
-    return sb;
 }
