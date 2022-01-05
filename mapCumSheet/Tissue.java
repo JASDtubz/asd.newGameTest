@@ -176,7 +176,7 @@ public class Tissue
                         while (b1)
                         {
                             String stringName = "";
-
+                            String text = "";
                             boolean b2 = false;
 
                             try
@@ -184,14 +184,34 @@ public class Tissue
                                 sb.delete(0, sb.indexOf(":") + 1);
                                 b2 = true;
                             }
-                            catch (Exception ignored) { err.println("No x found at " + line); }
+                            catch (Exception ignored) { err.println("No name found at " + line); }
 
                             if (b2)
                             {
-                                try { }
-                                catch (Exception ignored) { }
-                                finally { }
+                                try { stringName = sb.substring(0, sb.indexOf("<")); }
+                                catch (Exception ignored) { err.println("No name value at " + line); }
+                                finally { b2 = false; }
                             }
+                            
+                            try
+                            {
+                                sb.delete(0, sb.indexOf("<") + 1);
+                                b2 = true;
+                            }
+                            catch (Exception ignored) { err.println("No text found at " + line); }
+                            
+                            if (b2)
+                            {
+                                try { text = sb.substring(0, sb.indexOf(">")); }
+                                catch (Exception ignored) { err.println("No text value at " + line); }
+                                finally { b2 = false; }
+                            }
+                            
+                            sb.delete(0, sb.indexOf(">") + 1);
+                            
+                            if (!sb.substring(0, 1).equals(",")) { b1 = false; }
+                            
+                            hms.put(stringName, text);
                         }
 
                         hmc.put(ctr, c);
