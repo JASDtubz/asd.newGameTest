@@ -14,7 +14,7 @@ public class Tissue
     {
         Scanner scan = new Scanner(requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
         HashMap<String, Semen> hm = new HashMap<>();
-        String str;
+        String str = "";
         StringBuilder sb = new StringBuilder();
         String string = "";
         int line = 0;
@@ -173,7 +173,7 @@ public class Tissue
                         }
 
                         b1 = true;
-                        
+
                         //  String Loop
                         while (b1)
                         {
@@ -194,32 +194,36 @@ public class Tissue
                                 catch (Exception ignored) { err.println("No name value at " + line); }
                                 finally { b2 = false; }
                             }
-                            
+
+                            System.out.println(sb);
+                            System.out.println(stringName);
+                            System.exit(0);
+
                             try
                             {
                                 sb.delete(0, sb.indexOf("<") + 1);
                                 b2 = true;
                             }
                             catch (Exception ignored) { err.println("No text found at " + line); }
-                            
+
                             if (b2)
                             {
                                 try { text = sb.substring(0, sb.indexOf(">")); }
                                 catch (Exception ignored) { err.println("No text value at " + line); }
                                 finally { b2 = false; }
                             }
-                            
+
                             sb.delete(0, sb.indexOf(">") + 1);
-                            
+
                             if (!sb.substring(0, 1).equals(",")) { b1 = false; }
-                            
+
                             hms.put(stringName, text);
                         }
-                        
-                        c.addText(hms);
+
+                        c.setText(hms);
                         hmc.put(ctr, c);
-                        
-                        
+
+
                     }
 
                     s.addCells(hmc);
@@ -349,7 +353,7 @@ public class Tissue
                             if (sb.indexOf("]") == 1) { b1 = false; }
                         }
 
-                        c.setText(hms);
+                        //c.setText(hms);
                         al.add(c);
                     }
 
