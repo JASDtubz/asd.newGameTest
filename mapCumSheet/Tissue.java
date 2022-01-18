@@ -217,22 +217,23 @@ public final class Tissue
                     s.addCells(hmc);
                 }
 
+                sb.delete(0, sb.length());
                 hm.put(string, s);
                 list.add(string);
             }
         }
-        
+
         semen.list(this.getList(list));
         hm.put("_LIST_", semen);
         return hm;
     }
-    
+
     synchronized private String[] getList(ArrayList<String> al)
     {
         String[] list = new String[al.size()];
-        
+
         for (int i = 0; i < al.size(); i++) { list[i] = al.get(i); }
-        
+
         return list;
     }
 }
