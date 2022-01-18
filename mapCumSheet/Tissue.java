@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public final class Tissue
         StringBuilder sb = new StringBuilder();
         String string = "";
         int line = 0;
+        ArrayList<String> list = new ArrayList<>();
 
         while (scan.hasNextLine())
         {
@@ -212,9 +214,12 @@ public final class Tissue
                 }
 
                 hm.put(string, s);
+                list.add(string);
             }
         }
 
         return hm;
     }
+    
+    
 }
