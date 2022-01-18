@@ -4,6 +4,7 @@ public final class Sperm
 {
     public boolean collision;
     public ArrayList<Texture[]> texture = new ArrayList<>();
+    public String[] _LIST_;
 
     public Sperm() { }
 
@@ -17,6 +18,8 @@ public final class Sperm
 
         this.texture.add(t);
     }
+    
+    public void list(String[] s) { this._LIST_ = s; }
 }
 
 final class Texture
