@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Cell
+public final class Cell
 {
     public int x, y;
     public HashMap<String, String> hm;
