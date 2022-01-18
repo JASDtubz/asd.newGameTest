@@ -13,10 +13,10 @@ public final class Lotion
     synchronized public HashMap<Integer, Sperm> execute()
     {
         final Scanner scan = new Scanner(requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
-        HashMap<Integer, Sperm> hm = new HashMap<>();
+        HashMap<String, Sperm> hm = new HashMap<>();
         String str;
         StringBuilder sb = new StringBuilder();
-        int i = 0;
+        String string = "";
         int line = 0;
 
         while (scan.hasNextLine())
@@ -45,7 +45,7 @@ public final class Lotion
 
                 if (bool)
                 {
-                    try { s.setName(sb.substring(0, sb.indexOf(","))); }
+                    try { string = sb.substring(0, sb.indexOf(",")); }
                     catch (Exception ignored) { err.println("No name value found at " + line); }
                     finally { bool = false; }
                 }
@@ -123,8 +123,7 @@ public final class Lotion
                     }
                 }
 
-                hm.put(i, s);
-                i++;
+                hm.put(string, s);
                 sb.delete(0, sb.length());
             }
         }
