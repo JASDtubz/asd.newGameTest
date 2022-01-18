@@ -10,7 +10,7 @@ public final class Lotion
 {
     public Lotion() { }
 
-    synchronized public HashMap<Integer, Sperm> execute()
+    synchronized public HashMap<String, Sperm> execute()
     {
         final Scanner scan = new Scanner(requireNonNull(Lotion.class.getResourceAsStream("testicle/egg.cum")));
         HashMap<String, Sperm> hm = new HashMap<>();
