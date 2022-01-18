@@ -1,12 +1,12 @@
 import java.util.HashMap;
 
-public class Semen
+public final class Semen
 {
     public String name;
     public int xMin, yMin, xMax, yMax;
-    private HashMap<Integer, Sperm> hm;
+    public HashMap<String, Cell> hm;
 
-    public Semen(HashMap<Integer, Sperm> hm) { this.hm = hm; }
+    public Semen() { }
 
     public void setName(String s) { this.name = s; }
 
@@ -18,5 +18,5 @@ public class Semen
 
     public void setYMax(int i) { this.yMax = i; }
 
-    public void addCell(String s) { }
+    public void addCells(HashMap<String, Cell> hm) { this.hm = hm; }
 }
