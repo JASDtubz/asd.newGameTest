@@ -9,7 +9,7 @@ public class Main
         Tissue t = new Tissue();
         HashMap<String, Semen> hm_ = t.execute();
 
-        int i = hm.get(0).texture.size();
+        int i = hm.get("thing1").texture.size();
 //        System.out.println(hm.get(0).name);
 //        System.out.println(hm.get(0).collision);
 //        System.out.println(hm.get(0).texture.get(0)[0].r);
