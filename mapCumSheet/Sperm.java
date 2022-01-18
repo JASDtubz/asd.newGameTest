@@ -1,14 +1,8 @@
-import java.util.ArrayList;
 
-public final class Sperm
-{
-    public String name;
     public boolean collision;
     public ArrayList<Texture[]> texture = new ArrayList<>();
 
     public Sperm() { }
-
-    public void setName(String s) { this.name = s; }
 
     public void setCollision(boolean b) { this.collision = b; }
 
