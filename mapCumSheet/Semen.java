@@ -21,5 +21,5 @@ public final class Semen
 
     public void addCells(HashMap<String, Cell> hm) { this.hm = hm; }
     
-    public void list(String[] list) { this._LIST_ = list; }
+    public void list(String[] s) { this._LIST_ = s; }
 }
