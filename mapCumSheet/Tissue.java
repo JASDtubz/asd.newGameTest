@@ -5,7 +5,7 @@ import static java.lang.Integer.parseInt;
 import static java.lang.System.err;
 import static java.util.Objects.requireNonNull;
 
-public class Tissue
+public final class Tissue
 {
     public Tissue() { }
 
