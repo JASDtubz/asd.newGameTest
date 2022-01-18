@@ -5,7 +5,7 @@ public class Main
     public static void main(String[] args)
     {
         Lotion l = new Lotion();
-        HashMap<Integer, Sperm> hm = l.execute();
+        HashMap<String, Sperm> hm = l.execute();
         Tissue t = new Tissue();
         HashMap<String, Semen> hm_ = t.execute();
 
