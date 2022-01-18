@@ -9,25 +9,32 @@
             x:100,
             y:100,
             id:start1<
-                Hello_World,
-                This_is_nice,
-                $c Yes $t start2,
-                $c No $t start3
+                Hello_World $b,
+                This_is_nice $b,
+                $c Yes $t start2 $b,
+                $c No $t start3 $b
             >,
             id:start2<
-                That's_good,
-                Let's_continue $t start4
+                That's_good $b,
+                Let's_continue $t start4 $b
             >,
             id:start3<
-                Ok`_then $t start4
+                Ok`_then $t start4 $b
             >,
             id:start4<
-                Come_on
+                Come_on $b
             >
         ),
         thing2:(
             x:0,
-            y:0
+            y:0,
         )
     ]
+}
+{
+    name:test,
+    xMin:1000000000,
+    yMin:0,
+    xMax:0,
+    yMax:0,
 }
