@@ -130,6 +130,7 @@ public final class Tissue
                         String ctr = "";
                         HashMap<String, String> hms = new HashMap<>();
                         boolean b1 = false;
+                        ArrayList<String> list2 = new ArrayList<>();
 
                         try
                         {
@@ -199,10 +200,12 @@ public final class Tissue
 
                             if (!sb.substring(0, 1).equals(",")) { b1 = false; }
 
+                            list2.add(stringName);
                             hms.put(stringName, text);
                         }
 
                         c.setText(hms);
+                        c.list(this.getList(list2));
                         hmc.put(ctr, c);
 
                         sb.delete(0, sb.indexOf(")") + 1);
