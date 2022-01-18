@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 
+public final class Sperm
+{
     public boolean collision;
     public ArrayList<Texture[]> texture = new ArrayList<>();
 
