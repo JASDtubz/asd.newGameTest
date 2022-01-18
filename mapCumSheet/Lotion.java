@@ -18,6 +18,8 @@ public final class Lotion
         StringBuilder sb = new StringBuilder();
         String string = "";
         int line = 0;
+        ArrayList<String> list = new ArrayList<>();
+        Sperm sperm = new Sperm();
 
         while (scan.hasNextLine())
         {
@@ -124,10 +126,12 @@ public final class Lotion
                 }
 
                 hm.put(string, s);
-                sb.delete(0, sb.length());
+                list.add(string);
             }
         }
 
+        sperm.list(this.getList(list));
+        hm.put("_LIST_", sperm);
         return hm;
     }
 
@@ -138,5 +142,14 @@ public final class Lotion
         for (int i = 0; i < ii.length; i++) { ii[i] = al.get(i); }
 
         return ii;
+    }
+    
+    synchronized private String[] getList(ArrayList<String> al)
+    {
+        String[] list = new String[al.size()];
+        
+        for (int i = 0; i < al.size(); i++) { list[i] = al.get(i); }
+        
+        return list;
     }
 }
