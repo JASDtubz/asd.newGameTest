@@ -113,8 +113,8 @@ public final class Lotion
                             if (sb.indexOf(")") == 0)
                             {
                                 s.setTexture(
-                                        this.getList(r), this.getList(g), this.getList(b), this.getList(x), this.getList(y),
-                                        this.getList(l), this.getList(h)
+                                    this.getList(r), this.getList(g), this.getList(b), this.getList(x), this.getList(y),
+                                    this.getList(l), this.getList(h)
                                 );
 
                                 b1 = false;
@@ -125,6 +125,7 @@ public final class Lotion
                     }
                 }
 
+                sb.delete(0, sb.length());
                 hm.put(string, s);
                 list.add(string);
             }
