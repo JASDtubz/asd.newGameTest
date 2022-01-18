@@ -224,7 +224,7 @@ public final class Tissue
         return hm;
     }
     
-    synchronized private String[] getList(ArrayList<String> list)
+    synchronized private String[] getList(ArrayList<String> al)
     {
         String[] list = new String[al.size()];
         
