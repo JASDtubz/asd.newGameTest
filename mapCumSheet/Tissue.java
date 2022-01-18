@@ -13,7 +13,7 @@ public class Tissue
     {
         Scanner scan = new Scanner(requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
         HashMap<String, Semen> hm = new HashMap<>();
-        String str = "";
+        String str;
         StringBuilder sb = new StringBuilder();
         String string = "";
         int line = 0;
@@ -190,7 +190,6 @@ public class Tissue
                             {
                                 try { text = sb.substring(0, sb.indexOf(">")); }
                                 catch (Exception ignored) { err.println("No text value at " + line); }
-                                finally { b2 = false; }
                             }
 
                             sb.delete(0, sb.indexOf(">") + 1);
