@@ -113,8 +113,8 @@ public final class Lotion
                             if (sb.indexOf(")") == 0)
                             {
                                 s.setTexture(
-                                    this.getList(r), this.getList(g), this.getList(b), this.getList(x), this.getList(y),
-                                    this.getList(l), this.getList(h)
+                                        this.getList(r), this.getList(g), this.getList(b), this.getList(x), this.getList(y),
+                                        this.getList(l), this.getList(h)
                                 );
 
                                 b1 = false;
@@ -130,7 +130,7 @@ public final class Lotion
             }
         }
 
-        sperm.list(this.getList(list));
+        sperm.list(this.getList2(list));
         hm.put("_LIST_", sperm);
         return hm;
     }
@@ -143,13 +143,13 @@ public final class Lotion
 
         return ii;
     }
-    
-    synchronized private String[] getList(ArrayList<String> al)
+
+    synchronized private String[] getList2(ArrayList<String> al)
     {
         String[] list = new String[al.size()];
-        
+
         for (int i = 0; i < al.size(); i++) { list[i] = al.get(i); }
-        
+
         return list;
     }
 }
