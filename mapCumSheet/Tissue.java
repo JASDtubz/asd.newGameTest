@@ -19,6 +19,7 @@ public final class Tissue
         String string = "";
         int line = 0;
         ArrayList<String> list = new ArrayList<>();
+        Semen semen = new Semen();
 
         while (scan.hasNextLine())
         {
@@ -217,9 +218,18 @@ public final class Tissue
                 list.add(string);
             }
         }
-
+        
+        semen.list(this.getList(list));
+        hm.put("_LIST_", semen);
         return hm;
     }
     
-    
+    synchronized private String[] getList(ArrayList<String> list)
+    {
+        String[] list = new String[al.size()];
+        
+        for (int i = 0; i < al.size(); i++) { list[i] = al.get(i); }
+        
+        return list;
+    }
 }
