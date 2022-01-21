@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,6 +16,14 @@ public class Main extends Application
     @Override
     public void start(Stage s)
     {
+        Label l = new Label("loading...");
+        Scene temp = new Scene(l);
+        s.setScene(temp);
+        s.show();
+
+        try { System.class.wait(1000); }
+        catch (InterruptedException ignored) { }
+
         String[] str = { "one", "two" };
 
         for (String string : str) { cb.getItems().add(string); }
@@ -26,6 +35,7 @@ public class Main extends Application
         bp.setRight(cb);
         scene = new Scene(bp, 854, 480);
 
+        s.hide();
         s.setScene(scene);
         s.show();
     }
