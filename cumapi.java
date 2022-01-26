@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 import javafx.application.Application;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -25,6 +27,12 @@ public class Main extends Application
         
         s.setScene(temp);
         s.show();
+        
+        Lotion lotion = new Lotion();
+        HashMap<String, Sperm> hml = lotion.execute();
+        Tissue tissue = new Tissue();
+        HashMap<String, Semen> hmt = tissue.execute();
+        
 
         String[] str = { "one", "two" };
 
