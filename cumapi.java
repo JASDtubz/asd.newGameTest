@@ -103,13 +103,23 @@ public class Main extends Application
         this.hbYMin = new HBox();
         this.hbYMin.getChildren(new Label("Ymin"), this.yMin);
         
+        this.xMax = new TextField();
+        this.xMax.setDisable(true);
         
+        this.hbXMax = new HBox();
+        this.hbXMax.getChildren().addAll(new Label("Xmax"), this.xMax);
+        
+        this.yMax = new TextField();
+        this.yMax.setDisable(true);
+        
+        this.hbYMax = new HBox();
+        this.hbYMax.getChildren().addAll(new Label("Ymax"), this.yMax);
 
         this.vbC = new VBox();
         this.vbC.getChildren().addAll(this.choiceC, this.hbTfC, this.collision);
 
         this.vbM = new VBox();
-        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM, this.hbXMin, this.hbYMin);
+        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM, this.hbXMin, this.hbYMin, this.hbXMax, this.hbYMax);
 
         Button chars = new Button("Object");
         Button map = new Button("Map");
