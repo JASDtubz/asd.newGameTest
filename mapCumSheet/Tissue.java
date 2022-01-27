@@ -12,7 +12,7 @@ public final class Tissue
 
     synchronized public HashMap<String, Semen> execute()
     {
-        Scanner scan = new Scanner(requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
+        final Scanner scan = new Scanner(requireNonNull(Tissue.class.getResourceAsStream("testicle/condom.came")));
         HashMap<String, Semen> hm = new HashMap<>();
         String str;
         StringBuilder sb = new StringBuilder();
