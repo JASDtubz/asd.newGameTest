@@ -87,6 +87,7 @@ public class Main extends Application
         this.vbC.getChildren().addAll(this.choiceC, this.hbTfC, this.collision);
 
         this.vbM = new VBox();
+        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM);
 
         Button chars = new Button("Object");
         Button map = new Button("Map");
@@ -123,6 +124,6 @@ public class Main extends Application
         String s = this.choiceM.getValue();
 
         this.tfM.setDisable(false);
-        this.tfC.setText(s);
+        this.tfM.setText(s);
     }
 }
