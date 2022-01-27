@@ -178,7 +178,7 @@ public class Main extends Application
         this.yMax.setText(String.valueOf(this.hmt.get(s).yMax));
         
         this.cbCell.setDisable(false);
-        //this.cbCell.getItems().addAll(this.hmt.get(s)._LIST_);
+        this.cbCell.getItems().addAll(this.hmt.get(s)._LIST_);
     }
     
     public void chechInt()
