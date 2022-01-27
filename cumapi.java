@@ -175,12 +175,21 @@ public class Main extends Application
         this.yMax.setText(String.valueOf(this.hmt.get(s).yMax));
     }
     
-    public void chechInt(String s)
+    public void chechInt()
     {
-        try { int i = Integer.parseInt(s); }
-        catch (Exception ignore)
-        {
-            
-        }
+        int i;
+        this.l.setText("");
+    
+        try { i = Integer.parseInt(this.xMin.getText()); }
+        catch (Exception ignore) { this.l.setText(" Xmin is not a number. "); }
+        
+        try { i = Integer.parseInt(this.yMin.getText()); }
+        catch (Exception ignore) { this.l.setText(this.l.getText() + " Ymin is not a number. ");
+        
+        try { i = Integer.parseInt(this.xMax.getText()); }
+        catch (Exception ignore) { this.l.setText(this.l.getText() + " Xmax is not a number. "); }
+        
+        try { i = Integer.parseInt(this.yMax.getText()); }
+        catch (Exception ignore) { this.l.setText(this.l.getText() + " Ymax is not a number. "); }
     }
 }
