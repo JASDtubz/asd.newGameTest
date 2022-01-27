@@ -91,32 +91,36 @@ public class Main extends Application
 
         this.collision = new CheckBox("Collision");
         this.collision.setDisable(true);
-        
+
         this.xMin = new TextField();
         this.xMin.setDisable(true);
-        
+        this.xMin.setOnAction(q -> this.checkInt());
+
         this.hbXMin = new HBox();
         this.hbXMin.getChildren().addAll(new Label("Xmin"), this.xMin);
-        
+
         this.yMin = new TextField();
         this.yMin.setDisable(true);
-        
+        this.yMin.setOnAction(q -> this.checkInt());
+
         this.hbYMin = new HBox();
         this.hbYMin.getChildren().addAll(new Label("Ymin"), this.yMin);
-        
+
         this.xMax = new TextField();
         this.xMax.setDisable(true);
-        
+        this.xMax.setOnAction(q -> this.checkInt());
+
         this.hbXMax = new HBox();
         this.hbXMax.getChildren().addAll(new Label("Xmax"), this.xMax);
-        
+
         this.yMax = new TextField();
         this.yMax.setDisable(true);
-        
+        this.yMax.setOnAction(q -> this.checkInt());
+
         this.hbYMax = new HBox();
         this.hbYMax.getChildren().addAll(new Label("Ymax"), this.yMax);
-        
-        this.cbCell = new ChoiceBox<>():
+
+        this.cbCell = new ChoiceBox<>();
         this.cbCell.setDisable(true);
 
         this.vbC = new VBox();
@@ -164,37 +168,37 @@ public class Main extends Application
 
         this.tfM.setDisable(false);
         this.tfM.setText(s);
-        
+
         this.xMin.setDisable(false);
         this.xMin.setText(String.valueOf(this.hmt.get(s).xMin));
-        
+
         this.yMin.setDisable(false);
         this.yMin.setText(String.valueOf(this.hmt.get(s).yMin));
-        
+
         this.xMax.setDisable(false);
         this.xMax.setText(String.valueOf(this.hmt.get(s).xMax));
-        
+
         this.yMax.setDisable(false);
         this.yMax.setText(String.valueOf(this.hmt.get(s).yMax));
-        
+
         this.cbCell.setDisable(false);
         this.cbCell.getItems().addAll(this.hmt.get(s)._LIST_);
     }
-    
-    public void chechInt()
+
+    public void checkInt()
     {
         int i;
         this.l.setText("");
-    
+
         try { i = Integer.parseInt(this.xMin.getText()); }
         catch (Exception ignore) { this.l.setText(" Xmin is not a number. "); }
-        
+
         try { i = Integer.parseInt(this.yMin.getText()); }
-        catch (Exception ignore) { this.l.setText(this.l.getText() + " Ymin is not a number. ");
-        
+        catch (Exception ignore) { this.l.setText(this.l.getText() + " Ymin is not a number. "); }
+
         try { i = Integer.parseInt(this.xMax.getText()); }
         catch (Exception ignore) { this.l.setText(this.l.getText() + " Xmax is not a number. "); }
-        
+
         try { i = Integer.parseInt(this.yMax.getText()); }
         catch (Exception ignore) { this.l.setText(this.l.getText() + " Ymax is not a number. "); }
     }
