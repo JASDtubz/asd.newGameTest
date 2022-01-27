@@ -157,5 +157,17 @@ public class Main extends Application
 
         this.tfM.setDisable(false);
         this.tfM.setText(s);
+        
+        this.xMin.setDisable(false);
+        this.xMin.setText(this.hmt.get(s).xMin);
+        
+        this.yMin.setDisable(false);
+        this.yMin.setText(this.hmt.get(s).yMin);
+        
+        this.xMax.setDisable(false);
+        this.xMax.setText(this.hmt.get(s).xMax);
+        
+        this.yMax.setDisable(false);
+        this.yMax.setText(this.hmt.get(s).yMax);
     }
 }
