@@ -31,10 +31,18 @@ public class Main extends Application
     ChoiceBox<String> choiceM;
     HBox hbTfC;
     HBox hbTfM;
+    HBox hbXMin;
+    HBox hbYMin;
+    HBox hbXMax;
+    HBox hbYMax;
     Label l;
     Scene scene;
     TextField tfC;
     TextField tfM;
+    TextField xMin;
+    TextField yMin;
+    TextField xMax;
+    TextField yMax;
     VBox vbC;
     VBox vbM;
 
@@ -82,12 +90,26 @@ public class Main extends Application
 
         this.collision = new CheckBox("Collision");
         this.collision.setDisable(true);
+        
+        this.xMin = new TextField();
+        this.xMin.setDisable(true);
+        
+        this.hbXMin = new HBox();
+        this.hbXMin.getChildren().addAll(new Label("Xmin"), this.xMin);
+        
+        this.yMin = new TextField();
+        this.yMin.setDisable(true);
+        
+        this.hbYMin = new HBox();
+        this.hbYMin.getChildren(new Label("Ymin"), this.yMin);
+        
+        
 
         this.vbC = new VBox();
         this.vbC.getChildren().addAll(this.choiceC, this.hbTfC, this.collision);
 
         this.vbM = new VBox();
-        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM);
+        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM, this.hbXMin, this.hbYMin);
 
         Button chars = new Button("Object");
         Button map = new Button("Map");
