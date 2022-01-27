@@ -29,6 +29,7 @@ public class Main extends Application
     CheckBox collision;
     ChoiceBox<String> choiceC;
     ChoiceBox<String> choiceM;
+    ChoiceBox<String> cbCell;
     HBox hbTfC;
     HBox hbTfM;
     HBox hbXMin;
