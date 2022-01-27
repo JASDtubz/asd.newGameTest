@@ -131,9 +131,12 @@ public class Main extends Application
 
         ToolBar tb = new ToolBar(chars, map, save);
 
+        this.l.setText("");
+
         this.bp = new BorderPane();
         this.bp.setTop(tb);
         this.bp.setRight(this.vbC);
+        this.bp.setBottom(this.l);
         this.scene = new Scene(this.bp, 854, 480);
 
         s.hide();
@@ -170,5 +173,14 @@ public class Main extends Application
         
         this.yMax.setDisable(false);
         this.yMax.setText(this.hmt.get(s).yMax);
+    }
+    
+    public void chechInt(String s)
+    {
+        try { int i = Integer.parseInt(s); }
+        catch (Exceptiong ignore)
+        {
+            
+        }
     }
 }
