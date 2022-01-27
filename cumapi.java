@@ -102,7 +102,7 @@ public class Main extends Application
         this.yMin.setDisable(true);
         
         this.hbYMin = new HBox();
-        this.hbYMin.getChildren(new Label("Ymin"), this.yMin);
+        this.hbYMin.getChildren().addAll(new Label("Ymin"), this.yMin);
         
         this.xMax = new TextField();
         this.xMax.setDisable(true);
@@ -163,22 +163,22 @@ public class Main extends Application
         this.tfM.setText(s);
         
         this.xMin.setDisable(false);
-        this.xMin.setText(this.hmt.get(s).xMin);
+        this.xMin.setText(String.valueOf(this.hmt.get(s).xMin));
         
         this.yMin.setDisable(false);
-        this.yMin.setText(this.hmt.get(s).yMin);
+        this.yMin.setText(String.valueOf(this.hmt.get(s).yMin));
         
         this.xMax.setDisable(false);
-        this.xMax.setText(this.hmt.get(s).xMax);
+        this.xMax.setText(String.valueOf(this.hmt.get(s).xMax));
         
         this.yMax.setDisable(false);
-        this.yMax.setText(this.hmt.get(s).yMax);
+        this.yMax.setText(String.valueOf(this.hmt.get(s).yMax));
     }
     
     public void chechInt(String s)
     {
         try { int i = Integer.parseInt(s); }
-        catch (Exceptiong ignore)
+        catch (Exception ignore)
         {
             
         }
