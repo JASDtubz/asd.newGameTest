@@ -115,6 +115,9 @@ public class Main extends Application
         
         this.hbYMax = new HBox();
         this.hbYMax.getChildren().addAll(new Label("Ymax"), this.yMax);
+        
+        this.cbCell = new ChoiceBox<>():
+        this.cbCell.setDisable(true);
 
         this.vbC = new VBox();
         this.vbC.getChildren().addAll(this.choiceC, this.hbTfC, this.collision);
@@ -173,6 +176,9 @@ public class Main extends Application
         
         this.yMax.setDisable(false);
         this.yMax.setText(String.valueOf(this.hmt.get(s).yMax));
+        
+        this.cbCell.setDisable(false);
+        //this.cbCell.getItems().addAll(this.hmt.get(s)._LIST_);
     }
     
     public void chechInt()
