@@ -1,5 +1,4 @@
 package main;
-
 import java.util.HashMap;
 
 import javafx.application.Application;
@@ -15,8 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import main.engine.*;
 
 public class Main extends Application
 {
@@ -127,7 +124,7 @@ public class Main extends Application
         this.vbC.getChildren().addAll(this.choiceC, this.hbTfC, this.collision);
 
         this.vbM = new VBox();
-        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM, this.hbXMin, this.hbYMin, this.hbXMax, this.hbYMax);
+        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM, this.hbXMin, this.hbYMin, this.hbXMax, this.hbYMax, this.cbCell);
 
         Button chars = new Button("Object");
         Button map = new Button("Map");
@@ -182,7 +179,7 @@ public class Main extends Application
         this.yMax.setText(String.valueOf(this.hmt.get(s).yMax));
 
         this.cbCell.setDisable(false);
-        this.cbCell.getItems().addAll(this.hmt.get(s)._LIST_);
+        this.cbCell.getItems().addAll(this.hmt.get(s).hm.get("_LIST")._LIST_);
     }
 
     public void checkInt()
