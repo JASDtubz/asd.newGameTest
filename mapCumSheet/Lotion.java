@@ -135,8 +135,8 @@ public final class Lotion
         hm.put("_LIST_", sperm);
         return hm;
     }
-
-    synchronized private short[] getList(ArrayList<Short> al)
+    
+    private short[] getList(ArrayList<Short> al)
     {
         short[] ii = new short[al.size()];
 
@@ -145,7 +145,7 @@ public final class Lotion
         return ii;
     }
 
-    synchronized private String[] getList2(ArrayList<String> al)
+    private String[] getList2(ArrayList<String> al)
     {
         String[] list = new String[al.size()];
 
