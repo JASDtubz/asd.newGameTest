@@ -122,6 +122,8 @@ public final class Tissue
                 if (b)
                 {
                     HashMap<String, Cell> hmc = new HashMap<>();
+                    ArrayList<String> als = new ArrayList<>();
+                    Cell cell = new Cell();
                     boolean b0 = true;
 
                     while (b0)
@@ -213,7 +215,9 @@ public final class Tissue
                         if (!sb.substring(0, 1).equals(",")) { b0 = false; }
                         else { sb.delete(0, 1); }
                     }
-
+                    
+                    cell.list(this.getList(als));
+                    hmc.put("_LIST_", cell);
                     s.addCells(hmc);
                 }
 
