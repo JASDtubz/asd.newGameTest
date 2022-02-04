@@ -209,6 +209,7 @@ public final class Tissue
                         c.setText(hms);
                         c.list(this.getList(list2));
                         hmc.put(ctr, c);
+                        als.add(ctr);
 
                         sb.delete(0, sb.indexOf(")") + 1);
 
