@@ -10,11 +10,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import main.engine.*;
 
 public class Main extends Application
 {
@@ -24,6 +27,9 @@ public class Main extends Application
     HashMap<String, Semen> hmt;
 
     BorderPane bp;
+    Button bCC;
+    Button bCM;
+    Button bMC;
     CheckBox collision;
     ChoiceBox<String> choiceC;
     ChoiceBox<String> choiceM;
@@ -34,6 +40,9 @@ public class Main extends Application
     HBox hbYMin;
     HBox hbXMax;
     HBox hbYMax;
+    HBox hbCC;
+    HBox hbCM;
+    HBox hbMC;
     Label l;
     Scene scene;
     TextField tfC;
@@ -69,13 +78,26 @@ public class Main extends Application
 
         this.choiceC = new ChoiceBox<>();
         this.choiceC.getItems().addAll(this.hml.get("_LIST_")._LIST_);
-        this.choiceC.setOnAction(q -> this.updateChars());
+        this.choiceC.setOnAction(q -> this.setChars());
+
+        this.bCC = new Button("Add Cell");
+        this.bCC.setOnAction(q -> this.addCell());
+
+        this.hbCC = new HBox();
+        this.hbCC.getChildren().addAll(this.choiceC, this.bCC);
 
         this.choiceM = new ChoiceBox<>();
         this.choiceM.getItems().addAll(this.hmt.get("_LIST_")._LIST_);
         this.choiceM.setOnAction(q -> this.updateMaps());
 
+        this.bCM = new Button("Add Map");
+        this.bCM.setOnAction(q -> this.addMap());
+
+        this.hbCM = new HBox();
+        this.hbCM.getChildren().addAll(this.choiceM, this.bCM);
+
         this.tfC = new TextField();
+        this.tfC.setOnKeyPressed(q -> this.updateChars());
         this.tfC.setDisable(true);
 
         this.hbTfC = new HBox();
@@ -121,11 +143,19 @@ public class Main extends Application
         this.cbCell = new ChoiceBox<>();
         this.cbCell.setDisable(true);
 
+        this.bMC = new Button("Add Cell");
+        this.bMC.setOnAction(q -> this.addCellToMap());
+
+        this.hbMC = new HBox();
+        this.hbMC.getChildren().addAll(this.cbCell, this.bMC);
+
         this.vbC = new VBox();
-        this.vbC.getChildren().addAll(this.choiceC, this.hbTfC, this.collision);
+        this.vbC.getChildren().addAll(this.hbCC, this.hbTfC, this.collision);
 
         this.vbM = new VBox();
-        this.vbM.getChildren().addAll(this.choiceM, this.hbTfM, this.hbXMin, this.hbYMin, this.hbXMax, this.hbYMax, this.cbCell);
+        this.vbM.getChildren().addAll(
+            this.hbCM, this.hbTfM, this.hbXMin, this.hbYMin, this.hbXMax, this.hbYMax, this.hbMC
+        );
 
         Button chars = new Button("Object");
         Button map = new Button("Map");
@@ -145,11 +175,13 @@ public class Main extends Application
         this.scene = new Scene(this.bp, 854, 480);
 
         s.hide();
+        s.setTitle("Character and Map Creator");
+        s.getIcons().add(new Image("file:src/main/resources/loshun_upsized.png"));
         s.setScene(this.scene);
         s.show();
     }
 
-    public void updateChars()
+    public void setChars()
     {
         String s = this.choiceC.getValue();
 
@@ -158,6 +190,11 @@ public class Main extends Application
 
         this.collision.setDisable(false);
         this.collision.setSelected(this.hml.get(s).collision);
+    }
+
+    public void updateChars()
+    {
+        
     }
 
     public void updateMaps()
@@ -180,24 +217,69 @@ public class Main extends Application
         this.yMax.setText(String.valueOf(this.hmt.get(s).yMax));
 
         this.cbCell.setDisable(false);
-        this.cbCell.getItems().addAll(this.hmt.get(s).hm.get("_LIST")._LIST_);
+        this.cbCell.getItems().setAll(this.hmt.get(s).hm.get("_LIST_")._LIST_);
     }
 
     public void checkInt()
     {
-        int i;
+        String s = this.choiceM.getValue();
         this.l.setText("");
 
-        try { i = Integer.parseInt(this.xMin.getText()); }
+        try { this.hmt.get(s).xMax = Integer.parseInt(this.xMin.getText()); }
         catch (Exception ignore) { this.l.setText(" Xmin is not a number. "); }
 
-        try { i = Integer.parseInt(this.yMin.getText()); }
+        try { this.hmt.get(s).yMin = Integer.parseInt(this.yMin.getText()); }
         catch (Exception ignore) { this.l.setText(this.l.getText() + " Ymin is not a number. "); }
 
-        try { i = Integer.parseInt(this.xMax.getText()); }
+        try { this.hmt.get(s).xMax = Integer.parseInt(this.xMax.getText()); }
         catch (Exception ignore) { this.l.setText(this.l.getText() + " Xmax is not a number. "); }
 
-        try { i = Integer.parseInt(this.yMax.getText()); }
+        try { this.hmt.get(s).yMax = Integer.parseInt(this.yMax.getText()); }
         catch (Exception ignore) { this.l.setText(this.l.getText() + " Ymax is not a number. "); }
+    }
+
+    public void addCell()
+    {
+        Sperm s = new Sperm();
+        s.setCollision(false);
+
+        int i = 0;
+        String str;
+
+        while (true)
+        {
+            if (this.hml.containsKey("Cell" + i)) { i++; }
+            else
+            {
+                str = "Cell" + i;
+                this.hml.put(str, s);
+                break;
+            }
+        }
+
+        String[] ss = new String[this.hml.get("_LIST_")._LIST_.length + 1];
+        System.arraycopy(this.hml.get("_LIST_")._LIST_, 0, ss, 0, this.hml.get("_LIST_")._LIST_.length);
+        ss[this.hml.get("_LIST_")._LIST_.length] = str;
+        this.hml.get("_LIST_")._LIST_ = new String[ss.length];
+        System.arraycopy(ss, 0, this.hml.get("_LIST_")._LIST_, 0, ss.length);
+
+        this.choiceC.setValue(str);
+        this.choiceC.getItems().setAll(this.hml.get("_LIST_")._LIST_);
+        this.updateChars();
+    }
+
+    public void addMap()
+    {
+
+    }
+
+    public void addCellToMap()
+    {
+
+    }
+
+    public void save()
+    {
+
     }
 }
