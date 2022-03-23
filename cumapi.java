@@ -112,6 +112,8 @@ public class Main extends Application
         this.collision = new CheckBox("Collision");
         this.collision.setDisable(true);
 
+        ChoiceBox<String> cbState = new ChoiceBox<>();
+
         this.xMin = new TextField();
         this.xMin.setDisable(true);
         this.xMin.setOnAction(q -> this.checkInt());
@@ -157,12 +159,42 @@ public class Main extends Application
             this.hbCM, this.hbTfM, this.hbXMin, this.hbYMin, this.hbXMax, this.hbYMax, this.hbMC
         );
 
+        Button up = new Button("↑");
+        Button down = new Button("↓");
+        Button right = new Button("→");
+        Button left = new Button("←");
+        Button plus = new Button("+");
+        Button minus = new Button("-");
+
+        up.setPrefSize(50, 50);
+        down.setPrefSize(50, 50);
+        right.setPrefSize(50, 50);
+        left.setPrefSize(50, 50);
+        plus.setPrefSize(50, 50);
+        minus.setPrefSize(50, 50);
+
+        VBox leftCont = new VBox();
+        leftCont.getChildren().addAll(up, left, down);
+
+        VBox rightCont = new VBox();
+        rightCont.getChildren().addAll(plus, right, minus);
+
+        HBox control = new HBox();
+        control.getChildren().addAll(leftCont, rightCont);
+
+        BorderPane charEdit = new BorderPane();
+        charEdit.setLeft(control);
+        charEdit.setRight(this.vbC);
+
+        BorderPane mapEdit = new BorderPane();
+        mapEdit.setRight(this.vbM);
+
         Button chars = new Button("Object");
         Button map = new Button("Map");
         Button save = new Button("Save");
 
-        chars.setOnAction(q -> this.bp.setRight(this.vbC));
-        map.setOnAction(q -> this.bp.setRight(this.vbM));
+        chars.setOnAction(q -> this.bp.setCenter(charEdit));
+        map.setOnAction(q -> this.bp.setCenter(mapEdit));
 
         ToolBar tb = new ToolBar(chars, map, save);
 
@@ -170,7 +202,7 @@ public class Main extends Application
 
         this.bp = new BorderPane();
         this.bp.setTop(tb);
-        this.bp.setRight(this.vbC);
+        this.bp.setCenter(charEdit);
         this.bp.setBottom(this.l);
         this.scene = new Scene(this.bp, 854, 480);
 
